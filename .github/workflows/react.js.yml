@@ -1,0 +1,56 @@
+name: React CI
+
+on:
+  push:
+    branches:
+      - main # Run this action on pushes to the main branch
+  pull_request:
+    branches:
+      - main # Run this action on pull requests to the main branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18.x" # Specify Node.js version
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test -- --watchAll=false # Run tests in non-interactive mode
+
+      - name: Build project
+        run: npm run build
+
+      - name: Upload production-ready build files
+        uses: actions/upload-artifact@v3
+        with:
+          name: build
+          path: build/
+  deploy:
+    if: github.event.pull_request.merged == true || github.event_name == 'push'
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Deploy to Server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.PROD_IP }} # IP address
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD}} # Store the password securely in GitHub Secrets
+          script: |
+            cd /home/nizar/Projects/nodeBase  # Adjust the path to your application directory on the server
+            git pull origin main   # Pull the latest changes from your Git repository
+            npm install            # Install any new dependencies
+            pm2 start npm --name "nodeBase" -- start  # Start the app using PM2 (in background)
+            pm2 save               # Save the PM2 process list
+            pm2 restart all
