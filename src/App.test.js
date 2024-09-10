@@ -1,12 +1,33 @@
+// App.test.js
 import { render, screen } from '@testing-library/react';
 import App from './App';
+import Header from './components/Header';
+import Menu from './components/Menu';
+import Footer from './components/Footer';
 
 describe('App Component', () => {
-  test('renders Hello React Base text', () => {
+  test('renders Header component', () => {
     render(<App />);
-    const headingElement = screen.getByText(/Hello React Base/i);
-    expect(headingElement).toBeInTheDocument();
-    const divElement = screen.getByText(/We start building our web site !/i);
-    expect(divElement).toBeInTheDocument();
+    const headerElement = screen.getByRole('banner'); // Assuming Header has a role of 'banner'
+    expect(headerElement).toBeInTheDocument();
+  });
+
+  test('renders Menu component', () => {
+    render(<App />);
+    const menuElement = screen.getByText((content, element) => {
+      const hasText = (node) => node.textContent === 'Our Menu';
+      const nodeHasText = hasText(element);
+      const childrenDontHaveText = Array.from(element.children).every(
+        (child) => !hasText(child)
+      );
+      return nodeHasText && childrenDontHaveText;
+    });
+    expect(menuElement).toBeInTheDocument();
+  });
+
+  test('renders Footer component', () => {
+    render(<App />);
+    const footerElement = screen.getByRole('contentinfo'); // Assuming Footer has a role of 'contentinfo'
+    expect(footerElement).toBeInTheDocument();
   });
 });

@@ -1,10 +1,14 @@
-import './App.css';
+import "./App.css";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Menu from "./components/Menu";
 
 function App() {
   return (
     <div>
-    <h1>Hello React Base</h1>
-    <div>We start building our web site !</div>
+      <Header />
+      <Menu />
+      <Footer />
     </div>
   );
 }
