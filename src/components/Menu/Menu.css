@@ -46,4 +46,5 @@
 .dish-price {
   margin: 5px 0 0;
   font-weight: bold;
+  text-align: left;
 }
