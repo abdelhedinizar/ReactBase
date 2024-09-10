@@ -75,10 +75,6 @@ main h2 {
   margin-bottom: 20px;
 }
 
-.menucolor {
-  color: #11349d;
-}
-
 /* Line above the text */
 main h2::before {
   content: "";
@@ -111,14 +107,4 @@ main h2::after {
   /* Black color for the line */
   transform: translateX(-50%);
   border-radius: 2px;
-}
-
-/* Menu content styling */
-.menu-content {
-  margin-top: 30px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  /* Two columns for the menu items */
-  gap: 20px;
-  /* Spacing between items */
 }

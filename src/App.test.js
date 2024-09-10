@@ -1,9 +1,6 @@
 // App.test.js
 import { render, screen } from '@testing-library/react';
 import App from './App';
-import Header from './components/Header';
-import Menu from './components/Menu';
-import Footer from './components/Footer';
 
 describe('App Component', () => {
   test('renders Header component', () => {
