@@ -8,6 +8,16 @@
   margin-right: auto;
 }
 
+@media (max-width: 768px) {
+  .menu-content {
+    grid-template-columns: 1fr;
+  }
+
+  .image-item {
+    width: 100%;
+  }
+}
+
 .dish-item {
   display: flex;
   align-items: center;
