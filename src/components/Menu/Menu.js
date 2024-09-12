@@ -1,43 +1,6 @@
 import "./Menu.css";
+import React, { useState, useEffect } from "react";
 
-const dishList = [
-  {
-    name: "Pizza Neptune",
-    ingredients: "Tomato, tuna, onions, olives, cheese",
-    image: "../images/pizza.jpg",
-    price: "12",
-  },
-  {
-    name: "Pizza Margherita",
-    ingredients: "Tomato, mozzarella, fresh basil, olive oil, salt",
-    image: "../images/margherita.jpg",
-    price: "9",
-  },
-  {
-    name: "Pizza Pepperoni",
-    ingredients: "Tomato, mozzarella, pepperoni, olive oil",
-    image: "../images/pepperoni.jpg",
-    price: "13",
-  },
-  {
-    name: "Pizza BBQ Chicken",
-    ingredients: "BBQ sauce, chicken, mozzarella, onions, cilantro",
-    image: "../images/bbq_chicken.jpg",
-       price: "14"
-  },
-  {
-    name: "Pizza Hawaiian",
-    ingredients: "Tomato, mozzarella, ham, pineapple",
-    image: "../images/hawaiian.jpg",
-       price: "12"
-  },
-  {
-    name: "Pizza Quattro Formaggi",
-    ingredients: "Mozzarella, gorgonzola, parmesan, ricotta, olive oil",
-    image: "../images/quattro_formaggi.jpg",
-       price: "12",
-  },
-];
 
 function Dish(props) {
   return (
@@ -57,6 +20,14 @@ function Dish(props) {
 }
 
 function Menu() {
+  const [dishList, setDishList] = useState([]);
+  console.log(process.env);
+  useEffect(() => {
+    fetch(`${process.env.REACT_APP_BACK_API_URL}/dishs`)
+      .then((response) => response.json())
+      .then((data) => setDishList(data.dishList))
+      .catch((error) => console.error("Error fetching dish list:", error));
+  }, []);
   return (
     <main>
       <h2>

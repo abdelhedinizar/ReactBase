@@ -51,6 +51,6 @@ jobs:
             cd /home/nizar/Projects/reactBase  # Adjust the path to your application directory on the server
             git pull origin main   # Pull the latest changes from your Git repository
             npm install            # Install any new dependencies
-            pm2 start npm --name "reactBase" -- start  # Start the app using PM2 (in background)
+            pm2 start npm --name "reactBase" -- start --env production
             pm2 save               # Save the PM2 process list
             pm2 restart all
