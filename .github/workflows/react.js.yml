@@ -51,12 +51,13 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
-            cd /home/nizar/Projects/reactBase  # Adjust the path to your application directory on the server
+            cd /home/nizar/Projects/reactBase  # Path to your application on the server
             git fetch
             git reset --hard origin/main  # Forcefully pull the latest changes
-            npm cache clean --force
-            npm install            # Install any new dependencies
-            pm2 stop nodeBase  # Stop the old process
-            pm2 delete nodeBase  # Remove it from the PM2 process list
-            pm2 start npm --name "reactBase" -- start --env production
+            npm install  # Install dependencies if necessary
+            npm run build  # Build the project   
+            # Serve the build directory
+            pm2 stop reactBase  # Stop the old process
+            pm2 delete reactBase  # Remove the old process
+            pm2 start serve --name "reactBase" -- -s build -l 3000  # Serve the build folder on port 3000
             pm2 save
