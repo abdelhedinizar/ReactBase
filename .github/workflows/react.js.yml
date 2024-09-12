@@ -49,8 +49,11 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD}} # Store the password securely in GitHub Secrets
           script: |
             cd /home/nizar/Projects/reactBase  # Adjust the path to your application directory on the server
-            git pull origin main   # Pull the latest changes from your Git repository
+            git fetch
+            git reset --hard origin/main  # Forcefully pull the latest changes
+            npm cache clean --force
             npm install            # Install any new dependencies
+            pm2 stop nodeBase  # Stop the old process
+            pm2 delete nodeBase  # Remove it from the PM2 process list
             pm2 start npm --name "reactBase" -- start --env production
-            pm2 save               # Save the PM2 process list
-            pm2 restart all
+            pm2 save
