@@ -3,10 +3,10 @@ name: React CI
 on:
   push:
     branches:
-      - main # Run this action on pushes to the main branch
+      - main
   pull_request:
     branches:
-      - main # Run this action on pull requests to the main branch
+      - main
 
 jobs:
   build:
@@ -19,15 +19,17 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "18.x" # Specify Node.js version
+          node-version: "18.x"
 
       - name: Install dependencies
         run: npm install
 
       - name: Run tests
-        run: npm test -- --watchAll=false # Run tests in non-interactive mode
+        run: npm test -- --watchAll=false
 
       - name: Build project
+        env:
+          NODE_ENV: production # Ensure this is explicitly set
         run: npm run build
 
       - name: Upload production-ready build files
@@ -35,6 +37,7 @@ jobs:
         with:
           name: build
           path: build/
+
   deploy:
     if: github.event.pull_request.merged == true || github.event_name == 'push'
     runs-on: ubuntu-latest
@@ -44,9 +47,9 @@ jobs:
       - name: Deploy to Server
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.PROD_IP }} # IP address
+          host: ${{ secrets.PROD_IP }}
           username: ${{ secrets.SSH_USERNAME }}
-          password: ${{ secrets.SSH_PASSWORD}} # Store the password securely in GitHub Secrets
+          password: ${{ secrets.SSH_PASSWORD }}
           script: |
             cd /home/nizar/Projects/reactBase  # Adjust the path to your application directory on the server
             git fetch
