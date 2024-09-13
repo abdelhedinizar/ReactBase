@@ -56,7 +56,7 @@ jobs:
             git reset --hard origin/main  # Forcefully pull the latest changes
             npm install  # Install dependencies if necessary
             NODE_ENV=production npm run build  # Build the project explicitly in production mode
-            pm2 stop nodeBase || true  # Stop the old process if it exists
-            pm2 delete nodeBase || true  # Remove it from the PM2 process list if it exists           
+            pm2 stop reactBase || true  # Stop the old process if it exists
+            pm2 delete reactBase || true  # Remove it from the PM2 process list if it exists           
             pm2 start serve --name "reactBase" --env production -- -s build -l 3000
             pm2 save
