@@ -25,7 +25,7 @@ function Menu() {
   useEffect(() => {
     fetch(`${process.env.REACT_APP_BACK_API_URL}/dishs`)
       .then((response) => response.json())
-      .then((data) => setDishList(data.dishList))
+      .then((data) => setDishList(data.data.Dishs))
       .catch((error) => console.error("Error fetching dish list:", error));
   }, []);
   return (
