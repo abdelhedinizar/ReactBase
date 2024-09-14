@@ -1,23 +1,6 @@
 import "./Menu.css";
+import Dish from "./../Dish/Dish";
 import React, { useState, useEffect } from "react";
-
-
-function Dish(props) {
-  return (
-    <div className="dish-item">
-      <img
-        src={props.content.image}
-        alt={props.content.name}
-        className="image-item"
-      />
-      <div className="dish-details">
-        <h3 className="dish-title">{props.content.name}</h3>
-        <p className="dish-ingredients">{props.content.ingredients}</p>
-        <p className="dish-price">{props.content.price}</p>
-      </div>
-    </div>
-  );
-}
 
 function Menu() {
   const [dishList, setDishList] = useState([]);

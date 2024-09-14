@@ -18,43 +18,6 @@
   }
 }
 
-.dish-item {
-  display: flex;
-  align-items: center;
-  margin: 20px 0;
-}
-
 .menucolor {
   color: #11349d;
-}
-
-.image-item {
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  margin-right: 20px;
-}
-
-.dish-details {
-  display: flex;
-  flex-direction: column;
-}
-
-.dish-title {
-  font-size: 1.2em;
-  margin: 0;
-  font-weight: bold;
-  text-align: left;
-}
-
-.dish-ingredients {
-  margin: 5px 0 0;
-  color: #666;
-  text-align: left;
-}
-
-.dish-price {
-  margin: 5px 0 0;
-  font-weight: bold;
-  text-align: left;
 }
