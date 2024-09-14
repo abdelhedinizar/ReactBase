@@ -1,0 +1,44 @@
+.increment {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 10px;
+    /* Smaller gap between buttons and count */
+    font-family: Arial, sans-serif;
+    margin-top: 2px;
+}
+
+.increment button {
+    background-color: transparent;
+    /* Transparent background */
+    color: #333;
+    /* Darker text color */
+    border: 1px solid #333;
+    /* Solid border */
+    padding: 5px 10px;
+    /* Smaller padding for a compact look */
+    font-size: 1rem;
+    /* Slightly smaller font size */
+    cursor: pointer;
+    /* Pointer cursor on hover */
+    border-radius: 5px;
+    /* Rounded corners */
+    transition: all 0.3s ease;
+    /* Smooth transition for both color and border */
+}
+
+.increment button:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    /* Light black on hover */
+    border-color: #000;
+    /* Darker border on hover */
+}
+
+.increment h1 {
+    margin: 0;
+    /* Remove default margin */
+    font-size: 1rem;
+    /* Smaller font size */
+    color: #333;
+    font-weight: bold;
+}

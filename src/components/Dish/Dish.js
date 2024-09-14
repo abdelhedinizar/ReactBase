@@ -1,5 +1,6 @@
 import "./Dish.css";
 import createRipple from "../../utils/Ripple";
+import Increment from "../Increment/Increment";
 
 function Dish(props) {
 
@@ -14,6 +15,7 @@ function Dish(props) {
         <h3 className="dish-title">{props.content.name}</h3>
         <p className="dish-ingredients">{props.content.ingredients}</p>
         <p className="dish-price">{props.content.price}</p>
+        <Increment/>
       </div>
     </div>
   );
