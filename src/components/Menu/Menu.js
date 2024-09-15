@@ -1,15 +1,31 @@
 import "./Menu.css";
 import Dish from "./../Dish/Dish";
 import React, { useState, useEffect } from "react";
+import CommandeContr from "../../controllers/Commande";
+import { fetchDishList } from "../../services/DishsServ";
 
 function Menu() {
   const [dishList, setDishList] = useState([]);
-  console.log(process.env);
+  const [commande, setCommande] = useState([]);
+
+  function handleAddCommande(commandeDish) {
+    CommandeContr.addCommande.call(this, [commande, setCommande], commandeDish);
+  }
+
+  function handleRemoveLastCommande(dishId) {
+    CommandeContr.removeLastCommande.call(
+      this,
+      [commande, setCommande],
+      dishId
+    );
+  }
+
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_BACK_API_URL}/dishs`)
-      .then((response) => response.json())
-      .then((data) => setDishList(data.data.Dishs))
-      .catch((error) => console.error("Error fetching dish list:", error));
+    const getDishList = async () => {
+      const dishes = await fetchDishList();
+      setDishList(dishes);
+    };
+    getDishList();
   }, []);
   return (
     <main>
@@ -19,7 +35,14 @@ function Menu() {
       <div className="menu-content">
         {dishList.length > 0 &&
           dishList.map((dish) => {
-            return <Dish content={dish} key={dish.name} />;
+            return (
+              <Dish
+                content={dish}
+                key={dish.name}
+                onAddCommande={handleAddCommande}
+                onRemoveCommande={handleRemoveLastCommande}
+              />
+            );
           })}
       </div>
     </main>
