@@ -1,8 +1,8 @@
 import "./Menu.css";
-import Dish from "./../Dish/Dish";
 import React, { useState, useEffect } from "react";
 import CommandeContr from "../../controllers/Commande";
 import { fetchDishList } from "../../services/DishsServ";
+import MenuCategory from "../MenuCategory/MenuCategory";
 
 function Menu() {
   const [dishList, setDishList] = useState([]);
@@ -32,19 +32,24 @@ function Menu() {
       <h2>
         Our <span className="menucolor">Menu</span>
       </h2>
-      <div className="menu-content">
-        {dishList.length > 0 &&
-          dishList.map((dish) => {
-            return (
-              <Dish
-                content={dish}
-                key={dish.name}
-                onAddCommande={handleAddCommande}
-                onRemoveCommande={handleRemoveLastCommande}
-              />
-            );
-          })}
-      </div>
+      <MenuCategory
+        category="Pizza"
+        dishes={dishList}
+        onAddCommande={handleAddCommande}
+        onRemoveCommande={handleRemoveLastCommande}
+      />
+      <MenuCategory
+        category="Pasta"
+        dishes={dishList}
+        onAddCommande={handleAddCommande}
+        onRemoveCommande={handleRemoveLastCommande}
+      />
+      <MenuCategory
+        category="Burgers"
+        dishes={dishList}
+        onAddCommande={handleAddCommande}
+        onRemoveCommande={handleRemoveLastCommande}
+      />
     </main>
   );
 }

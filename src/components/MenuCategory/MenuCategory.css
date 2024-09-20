@@ -1,0 +1,53 @@
+.category {
+    text-align: left;
+    margin: 30px auto;
+    width: 80%;
+    font-family: "Playpen Sans", cursive;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 3em;
+}
+.menu-content {
+    display: grid;
+    gap: 12px;
+    /* Increased gap for more space between cards */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    /* Responsive grid */
+    width: 80%;
+    margin: 30px auto;
+    /* Centering the grid */
+}
+
+@media (max-width: 768px) {
+    .menu-content {
+        display: flex;
+        /* Switch to flexbox for horizontal scrolling */
+        overflow-x: auto;
+        /* Enable horizontal scrolling */
+        gap: 12px;
+        scroll-snap-type: x mandatory;
+        /* Optional: Smooth scrolling effect */
+        padding: 10px;
+        /* Add some padding to avoid clipping */
+        width: 100%;
+    }
+
+    .menu-content::-webkit-scrollbar {
+        display: none;
+        /* Hide scrollbar for a cleaner look */
+    }
+
+    .menu-content>* {
+        flex: 0 0 auto;
+        /* Make each dish card the same width */
+        width: 220px;
+        /* Set a fixed width for each dish item */
+        scroll-snap-align: start;
+        /* Aligns dish items nicely when scrolling */
+    }
+
+    .image-item {
+        width: 100%;
+    }
+}
