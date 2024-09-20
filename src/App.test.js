@@ -14,10 +14,7 @@ describe('App Component', () => {
     const menuElement = screen.getByText((content, element) => {
       const hasText = (node) => node.textContent === 'Our Menu';
       const nodeHasText = hasText(element);
-      const childrenDontHaveText = Array.from(element.children).every(
-        (child) => !hasText(child)
-      );
-      return nodeHasText && childrenDontHaveText;
+      return nodeHasText;
     });
     expect(menuElement).toBeInTheDocument();
   });
