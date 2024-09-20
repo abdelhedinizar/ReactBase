@@ -2,6 +2,7 @@ import "./Dish.css";
 import createRipple from "../../utils/Ripple";
 import React, { useState } from "react";
 import Increment from "../Increment/Increment";
+import Favorise from "../Favorise/Favorise";
 
 function Dish(props) {
   const [count, setCount] = useState(0);
@@ -54,12 +55,15 @@ function Dish(props) {
       <div className="dish-details">
         <h3 className="dish-title">{props.content.name}</h3>
         <p className="dish-ingredients">{props.content.ingredients}</p>
-        <p className="dish-price">{props.content.price}</p>
+        <p className="dish-price">{props.content.price} €</p>
+        <div className="dish-actions">
         <Increment
           count={count}
           increment={handleIncrement}
           decrement={handleDecrement}
         />
+        <Favorise />
+        </div>
       </div>
     </div>
   );

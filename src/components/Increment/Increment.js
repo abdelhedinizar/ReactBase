@@ -10,9 +10,9 @@ function Increment(props) {
 
   return (
     <div className="increment">
-      <button onClick={props.increment}>+</button>
-      <h1>{count}</h1>
       <button onClick={props.decrement}>-</button>
+      <h1>{count}</h1>
+      <button onClick={props.increment}>+</button>
     </div>
   );
 }

@@ -1,0 +1,25 @@
+.heart-icon {
+    cursor: pointer;
+    font-size: 2rem;
+    /* Adjust size as needed */
+    color: #ccc;
+    /* Default color for the empty heart */
+    transition: color 0.3s ease;
+}
+
+.heart-icon .full-heart {
+    color: red;
+    /* Color for the full heart */
+}
+
+.heart-icon .empty-heart {
+    color: #000000;
+    --fa-animation-duration: 80s;
+}
+
+.heart-icon:hover .empty-heart,
+.heart-icon:hover .full-heart {
+    color: #ff0000;
+    --fa-animation-duration: 2s;
+    /* Lighter red on hover */
+}
