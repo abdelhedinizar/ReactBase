@@ -1,58 +1,79 @@
 .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: linear-gradient(135deg, #ff0000, #ff284b);
-    padding: 10px 20px;
-        /* Gradient Background */
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        /* Subtle shadow for depth */
-        color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, #ff0000, #ff284b);
+  padding: 10px 20px;
+  /* Gradient Background */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* Subtle shadow for depth */
+  color: #fff;
 }
+/* Ajouter un style responsive pour mobiles */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 1.7em;
+    /* Diminuer la taille du titre pour les petits écrans */
+  }
 
-.menu {
-    width: 50px;
-    height: 50px;
+  header p {
+    font-size: 16px;
+    /* Diminuer la taille du sous-titre */
+  }
+
+  .menu {
+    width: 30px;
+    height: 30px;
     margin: 8px;
     cursor: pointer;
+  }
+
+  .menu span {
+    height: 4px;
+  }
+}
+.menu {
+  width: 50px;
+  height: 50px;
+  margin: 8px;
+  cursor: pointer;
 }
 
 .menu div {
-    width: 100%;
-    height: 100%;
-    position: relative;
+  width: 100%;
+  height: 100%;
+  position: relative;
 }
 
 .menu span {
-    background: #fff;
-    width: 100%;
-    height: 6px;
-    border-radius: 5px;
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    transition: all 0.3s ease-in-out;
-
+  background: #fff;
+  width: 100%;
+  height: 6px;
+  border-radius: 5px;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease-in-out;
 }
 
 .menu .line-1 {
-    transform: translate(-50%, -17px);
+  transform: translate(-50%, -17px);
 }
 
 .menu .line-3 {
-    transform: translate(-50%, 12px);
+  transform: translate(-50%, 12px);
 }
 
 .openmenu .line-1 {
-    transform: translate(-50%, 0) rotate(-45deg);
+  transform: translate(-50%, 0) rotate(-45deg);
 }
 
 .openmenu .line-3 {
-    transform: translate(-50%, 0) rotate(45deg);
+  transform: translate(-50%, 0) rotate(45deg);
 }
 
 .openmenu .line-2 {
-    width: 0;
+  width: 0;
 }

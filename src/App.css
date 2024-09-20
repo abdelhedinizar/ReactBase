@@ -39,18 +39,7 @@ header p {
   /* Couleur complémentaire (ex: couleur dorée) */
 }
 
-/* Ajouter un style responsive pour mobiles */
-@media (max-width: 768px) {
-  header h1 {
-    font-size: 36px;
-    /* Diminuer la taille du titre pour les petits écrans */
-  }
 
-  header p {
-    font-size: 16px;
-    /* Diminuer la taille du sous-titre */
-  }
-}
 
 /* Style for the main section */
 main {
