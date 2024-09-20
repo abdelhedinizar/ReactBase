@@ -90,3 +90,46 @@
 .dish-actions .favorise {
   margin-left: auto;
 }
+
+@media (max-width: 768px) {
+    .dish-item {
+        max-width: 180px;
+        /* Smaller card width */
+        border-radius: 10px;
+        /* Slightly reduce border-radius */
+    }
+
+    .image-item {
+        height: 120px;
+        /* Smaller image height */
+    }
+
+    .dish-details {
+        padding-left: 20px;
+        padding-bottom: 10px;
+    }
+
+    .dish-title {
+        font-size: 1em;
+        /* Smaller font size */
+    }
+
+    .dish-ingredients {
+        font-size: 0.8em;
+        /* Smaller font size */
+        max-width: 100%;
+        /* Ensure it fits within the card */
+        height: auto;
+    }
+
+    .dish-price {
+        font-size: 1em;
+        /* Slightly smaller price text */
+    }
+
+    .dish-actions {
+        margin-top: 5px;
+        padding-right: 20px;
+        
+    }
+}

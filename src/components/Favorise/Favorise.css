@@ -7,6 +7,12 @@
     transition: color 0.3s ease;
 }
 
+@media (max-width: 768px) {
+    .heart-icon {
+        font-size: 1.5rem;
+    }
+}
+
 .heart-icon .full-heart {
     color: red;
     /* Color for the full heart */
