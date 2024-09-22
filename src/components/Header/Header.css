@@ -3,37 +3,6 @@
     font-size: 1.7em !important;
     /* Diminuer la taille du titre pour les petits écrans */
   }
-
-  header p {
-    font-size: 16px;
-  }
-
-  .menu {
-    width: 30px !important;
-    height: 30px !important;
-    margin: 8px;
-    cursor: pointer;
-  }
-
-  .menu span {
-    height: 2px !important;
-  }
-
-  .menu .line-1 {
-    transform: translate(-50%, -10px) !important;
-  }
-
-  .menu .line-3 {
-    transform: translate(-50%, 8px) !important;
-  }
-
-  .openmenu .line-1 {
-    transform: translate(-50%, 0) rotate(-45deg) !important;
-  }
-
-  .openmenu .line-3 {
-    transform: translate(-50%, 0) rotate(45deg) !important;
-  }
 }
 
 .header {
@@ -59,50 +28,4 @@ header h1 {
   /* Espacement entre les lettres */
   margin: 0;
   /* Pas de marge */
-}
-
-.menu {
-  width: 50px;
-  height: 50px;
-  margin: 8px;
-  cursor: pointer;
-}
-
-.menu div {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-
-.menu span {
-  background: #fff;
-  width: 100%;
-  height: 6px;
-  border-radius: 5px;
-  display: block;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  transition: all 0.3s ease-in-out;
-}
-
-.menu .line-1 {
-  transform: translate(-50%, -17px);
-}
-
-.menu .line-3 {
-  transform: translate(-50%, 12px);
-}
-
-.openmenu .line-1 {
-  transform: translate(-50%, 0) rotate(-45deg);
-}
-
-.openmenu .line-3 {
-  transform: translate(-50%, 0) rotate(45deg);
-}
-
-.openmenu .line-2 {
-  width: 0;
 }

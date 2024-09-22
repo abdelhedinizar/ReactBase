@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import NavBarButton from "../NavBarButton/NavBarButton";
 import "./Header.css";
 
-function Header({onToggleNavBar}) {
+function Header({ onToggleNavBar }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   function navbarClick() {
@@ -11,13 +12,7 @@ function Header({onToggleNavBar}) {
 
   return (
     <header className="header">
-      <div className={`menu ${isMenuOpen ? "openmenu" : ""}`} onClick={navbarClick}>
-        <div>
-          <span className="line-1"></span>
-          <span className="line-2"></span>
-          <span className="line-3"></span>
-        </div>
-      </div>
+      <NavBarButton onToggleNavBar={navbarClick} isMenuOpen={isMenuOpen} />
       <h1>Pizza Di Napoli</h1>
       <p></p>
     </header>
