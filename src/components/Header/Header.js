@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import "./Header.css";
 
-function Header() {
+function Header({onToggleNavBar}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   function navbarClick() {
     setIsMenuOpen(!isMenuOpen);
+    onToggleNavBar();
   }
 
   return (
