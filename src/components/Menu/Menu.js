@@ -4,9 +4,9 @@ import CommandeContr from "../../controllers/Commande";
 import { fetchDishList } from "../../services/DishsServ";
 import MenuCategory from "../MenuCategory/MenuCategory";
 
-function Menu() {
-  const [dishList, setDishList] = useState([]);
-  const [commande, setCommande] = useState([]);
+function Menu({ dishes, commandeDishs}) {
+  const [dishList, setDishList] = dishes;
+  const [commande, setCommande] = commandeDishs;
 
   function handleAddCommande(commandeDish) {
     CommandeContr.addCommande.call(this, [commande, setCommande], commandeDish);
@@ -22,8 +22,8 @@ function Menu() {
 
   useEffect(() => {
     const getDishList = async () => {
-      const dishes = await fetchDishList();
-      setDishList(dishes);
+      const dishesResp = await fetchDishList();
+      setDishList(dishesResp);
     };
     getDishList();
   }, []);

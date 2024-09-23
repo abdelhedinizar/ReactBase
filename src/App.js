@@ -9,6 +9,8 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const [dishList, setDishList] = useState([]);
+  const [commande, setCommande] = useState([]);
 
   // This function will toggle the NavBar
   const toggleNavBar = () => {
@@ -19,11 +21,19 @@ function App() {
     <Router>
       <div className="App">
         <div className={`screen-layout ${isNavOpen ? "shifted" : ""}`}>
-          <Header onToggleNavBar={toggleNavBar} />
+          <Header onToggleNavBar={toggleNavBar} commande={commande} />
 
           <div className="main-content">
             <Routes>
-              <Route path="/" element={<Menu />} />
+              <Route
+                path="/"
+                element={
+                  <Menu
+                    dishes={[dishList, setDishList]}
+                    commandeDishs={[commande, setCommande]}
+                  />
+                }
+              />
               <Route path="/about" element={<About />} />
               <Route path="/services" element={<Services />} />
               <Route path="/contact" element={<Contact />} />
