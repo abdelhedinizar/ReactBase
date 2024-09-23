@@ -4,7 +4,7 @@ import CommandeContr from "../../controllers/Commande";
 import { fetchDishList } from "../../services/DishsServ";
 import MenuCategory from "../MenuCategory/MenuCategory";
 
-function Menu({ dishes, commandeDishs}) {
+function Menu({ dishes, commandeDishs }) {
   const [dishList, setDishList] = dishes;
   const [commande, setCommande] = commandeDishs;
 
@@ -50,6 +50,9 @@ function Menu({ dishes, commandeDishs}) {
         onAddCommande={handleAddCommande}
         onRemoveCommande={handleRemoveLastCommande}
       />
+      <button className="fixed-button">
+        Order
+      </button>
     </main>
   );
 }
