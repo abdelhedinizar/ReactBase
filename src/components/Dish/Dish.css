@@ -54,6 +54,9 @@
   font-size: 1.2em;
   font-weight: bold;
   color: #333;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .dish-ingredients {
@@ -108,8 +111,7 @@
   }
 
   .dish-title {
-    font-size: 1em;
-    /* Smaller font size */
+    font-size: 1.2em;
   }
 
   .dish-ingredients {

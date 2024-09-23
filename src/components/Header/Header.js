@@ -15,9 +15,7 @@ function Header({ onToggleNavBar, commande }) {
     <header className="header">
       <NavBarButton onToggleNavBar={navbarClick} isMenuOpen={isMenuOpen} />
       <h1>Pizza Di Napoli</h1>
-      <p>
-        <CartShoppingButton notificationCount={commande.length} />
-      </p>
+      <CartShoppingButton notificationCount={commande.length} />
     </header>
   );
 }
