@@ -26,7 +26,7 @@ function Menu({ dishes, commandeDishs}) {
       setDishList(dishesResp);
     };
     getDishList();
-  }, setDishList);
+  }, [setDishList]);
   return (
     <main>
       <h2>
