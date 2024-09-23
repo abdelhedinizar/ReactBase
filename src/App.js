@@ -37,6 +37,7 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/services" element={<Services />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/commande" element={<Commande />} />
             </Routes>
             <Footer />
           </div>
@@ -52,5 +53,7 @@ function App() {
 const About = () => <h2>About Page</h2>;
 const Services = () => <h2>Services Page</h2>;
 const Contact = () => <h2>Contact Page</h2>;
+const Commande = () => <h2>Commande Page</h2>;
+
 
 export default App;
