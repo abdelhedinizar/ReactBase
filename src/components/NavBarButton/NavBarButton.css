@@ -1,7 +1,7 @@
 @media (max-width: 768px) {
   .menu {
-    width: 30px !important;
-    height: 30px !important;
+    width: 20px !important;
+    height: 20px !important;
     margin: 8px;
     cursor: pointer;
   }
@@ -11,11 +11,11 @@
   }
 
   .menu .line-1 {
-    transform: translate(-50%, -10px) !important;
+    transform: translate(-50%, -7px) !important;
   }
 
   .menu .line-3 {
-    transform: translate(-50%, 8px) !important;
+    transform: translate(-50%, 5px) !important;
   }
 
   .openmenu .line-1 {
