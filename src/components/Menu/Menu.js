@@ -3,6 +3,8 @@ import React, { useEffect } from "react";
 import CommandeContr from "../../controllers/Commande";
 import { fetchDishList } from "../../services/DishsServ";
 import MenuCategory from "../MenuCategory/MenuCategory";
+import createRipple from "../../utils/Ripple";
+
 
 function Menu({ dishes, commandeDishs }) {
   const [dishList, setDishList] = dishes;
@@ -10,6 +12,11 @@ function Menu({ dishes, commandeDishs }) {
 
   function handleAddCommande(commandeDish) {
     CommandeContr.addCommande.call(this, [commande, setCommande], commandeDish);
+  }
+
+  function handleValidCommande(event) {
+        createRipple.call(this, event);
+
   }
 
   function handleRemoveLastCommande(dishId) {
@@ -50,7 +57,7 @@ function Menu({ dishes, commandeDishs }) {
         onAddCommande={handleAddCommande}
         onRemoveCommande={handleRemoveLastCommande}
       />
-      <button className="fixed-button">
+      <button className="fixed-button" onClick={handleValidCommande}>
         Order
       </button>
     </main>

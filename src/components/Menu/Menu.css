@@ -1,7 +1,9 @@
 .fixed-button {
   width: 240px;
   height: 60px;
+  font-weight: bold;
   position: fixed;
+  overflow: hidden;
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
@@ -10,7 +12,7 @@
   color: white;
   border: none;
   border-radius: 1rem;
-  font-size: 0.75rem;
+  font-size: 0.95rem;
   cursor: pointer;
   align-items: center;
   box-shadow: rgba(251, 140, 0, 0.15) 0rem 0.1875rem 0.1875rem 0rem,
@@ -21,7 +23,6 @@
   outline: 0px;
   border: 0px;
   margin: 0px;
-  cursor: pointer;
   vertical-align: middle;
   appearance: none;
   text-decoration: none;
@@ -32,8 +33,6 @@
   justify-content: center;
   -webkit-box-align: center;
   align-items: center;
-  font-size: 0.75rem;
-  font-weight: 700;
   line-height: 1.4;
   text-align: center;
   text-transform: uppercase;
@@ -52,14 +51,14 @@
   background-origin: initial;
   background-clip: initial;
   background-color: initial;
-  color: rgb(255, 255, 255);
   background-size: 150% !important;
   background-position-x: 25% !important;
 }
 
 .fixed-button:hover {
-  background-color: #0056b3;
-  /* Change color on hover */
+  box-shadow: rgba(251, 140, 0, 0.4) 0rem 0.875rem 1.625rem -0.75rem,
+    rgba(251, 140, 0, 0.15) 0rem 0.25rem 1.4375rem 0rem,
+    rgba(251, 140, 0, 0.2) 0rem 0.5rem 0.625rem -0.3125rem;
 }
 
 .menucolor {
@@ -69,6 +68,6 @@
 @media (max-width: 768px) {
   .fixed-button {
     width: 160px;
-    height: 40px;
+    height: 50px;
   }
 }
