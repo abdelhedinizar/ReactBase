@@ -1,5 +1,5 @@
 import "./Menu.css";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import CommandeContr from "../../controllers/Commande";
 import { fetchDishList } from "../../services/DishsServ";
 import MenuCategory from "../MenuCategory/MenuCategory";
@@ -26,7 +26,7 @@ function Menu({ dishes, commandeDishs}) {
       setDishList(dishesResp);
     };
     getDishList();
-  }, []);
+  }, setDishList);
   return (
     <main>
       <h2>
