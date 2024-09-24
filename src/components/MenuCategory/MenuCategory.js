@@ -10,13 +10,13 @@ export default function MenuCategory({
 }) {
   const [dishList, setDishList] = useState([]);
   useEffect(() => {
-    setDishList(dishes.filter((dish) => dish.category === category));
+    setDishList(dishes?.filter((dish) => dish.category === category));
   }, [dishes, category]);
   return (
     <>
       <h3 className="category">{category}</h3>
       <div className="menu-content">
-        {dishList.length > 0 &&
+        {dishList?.length > 0 &&
           dishList.map((dish) => {
             return (
               <Dish

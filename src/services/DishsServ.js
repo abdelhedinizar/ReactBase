@@ -5,7 +5,7 @@ const fetchDishList = async () => {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     const data = await response.json();
-    return data.data.Dishs;
+    return data.data.dishs;
   } catch (error) {
     console.error("Error fetching dish list:", error);
     throw error;
