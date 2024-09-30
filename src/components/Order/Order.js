@@ -1,7 +1,7 @@
 import "./Order.css";
 import OrderItem from "../OrderItem/OrderItem";
 function Order({ commande }) {
-  const [commandeList, setCommandeList] = commande;
+  const [commandeList] = commande;
 
   return (
     <div className="content">
