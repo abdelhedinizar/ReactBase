@@ -1,0 +1,58 @@
+.content {
+  padding: 20px;
+  background-color: #faf9f4;
+  /* Light background similar to your image */
+  text-align: center;
+  font-family: "Arial", sans-serif;
+}
+
+.orders {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+.titre {
+  font-size: 36px;
+  font-weight: bold;
+  position: relative;
+  /* To position the lines relative to the text */
+  display: inline-block;
+  color: #333;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  /* Uppercase text like the image */
+  margin-bottom: 20px;
+}
+
+.titre::before {
+  content: "";
+  position: absolute;
+  top: -15px;
+  /* Adjust distance above the text */
+  left: 50%;
+  width: 80px;
+  /* Length of the top line */
+  height: 4px;
+  /* Thickness of the line */
+  background-color: #000;
+  /* Black color for the line */
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+/* Line below the text */
+.titre::after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  /* Adjust distance below the text */
+  left: 50%;
+  width: 80px;
+  /* Length of the bottom line */
+  height: 4px;
+  /* Thickness of the line */
+  background-color: #000;
+  /* Black color for the line */
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
