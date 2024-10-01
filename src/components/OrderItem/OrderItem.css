@@ -2,7 +2,6 @@
   position: relative;
   display: flex;
   flex-direction: row;
-  /* Horizontal layout */
   align-items: center;
   background-color: #fff;
   border-radius: 15px;
@@ -10,10 +9,14 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   overflow: hidden;
   width: 100%;
-  /* Takes the full width of its container */
   max-width: 600px;
-  /* Set a max-width to prevent stretching */
   margin: 10px auto;
+}
+
+@media (max-width: 768px) {
+  .order-item {
+    margin: 3px auto;
+  }
 }
 
 .order-item:hover {

@@ -11,6 +11,15 @@
   gap: 12px;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 }
+
+@media (max-width: 768px) {
+  .orders {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+}
+
 .titre {
   font-size: 36px;
   font-weight: bold;
