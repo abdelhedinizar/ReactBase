@@ -7,9 +7,9 @@
 }
 
 .orders {
-  position: relative;
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 }
 .titre {
   font-size: 36px;
