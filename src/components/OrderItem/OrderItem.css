@@ -16,6 +16,57 @@
   /* Default, no translation */
 }
 
+.order-item.intro {
+  animation: swipeHint 1s ease forwards;
+}
+.order-item.intro .swipe-delete {
+  animation: swipeHintButton 1s ease forwards;
+}
+
+@keyframes swipeHint {
+  0% {
+    transform: translateX(0);
+    /* Start at original position */
+  }
+
+  30% {
+    transform: translateX(-50px);
+    /* Swipe a little left */
+  }
+
+  60% {
+    transform: translateX(0);
+    /* Swipe back to the original position */
+  }
+
+  100% {
+    transform: translateX(0);
+    /* End at original position */
+  }
+}
+
+@keyframes swipeHintButton {
+  0% {
+    right: -100px;
+    /* Hide the button off the card */
+  }
+
+  30% {
+    right: -60px;
+    /* Button moves into view */
+  }
+
+  60% {
+    right: -90px;
+    /* Button moves back off the card */
+  }
+
+  100% {
+    right: -100px;
+    /* Reset to hidden */
+  }
+}
+
 /* Swiped left - move the entire card to the left */
 .order-item.swiped {
   transform: translateX(-100px);
@@ -27,7 +78,6 @@
 .swipe-delete {
   position: absolute;
   right: -100px;
-  /* Hide the button off the card */
   top: 0;
   bottom: 0;
   width: 100px;
@@ -48,6 +98,17 @@
   color: white;
   font-size: 24px;
   cursor: pointer;
+}
+
+.order-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.order-price {
+  font-size: 1.1em;
+  color: #333;
 }
 
 /* Prevent button from overlapping text */

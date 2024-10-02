@@ -1,8 +1,9 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./OrderItem.css";
 
 function OrderItem({ orderItem, index, onDelete }) {
   const [swiped, setSwiped] = useState(false);
+  const [intro, setIntro] = useState(true);
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
 
@@ -32,10 +33,18 @@ function OrderItem({ orderItem, index, onDelete }) {
     }
   };
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIntro(false); // Remove intro class after animation finishes
+    }, 1000); // Animation duration (matches the CSS animation)
+
+    return () => clearTimeout(timer); // Cleanup timer on unmount
+  }, []);
+
   return (
     <div
       key={index}
-      className={`order-item ${swiped ? "swiped" : ""}`}
+      className={`order-item ${swiped ? "swiped" : ""} ${intro ? "intro" : ""}`}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
