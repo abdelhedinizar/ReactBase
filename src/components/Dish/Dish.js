@@ -8,6 +8,7 @@ function Dish(props) {
   const [count, setCount] = useState(0);
   let isDecrement = false;
   let isIncrement = false;
+  let isFavorised = false;
   function addDishToCommande(event) {
     createRipple.call(this, event);
     if (isDecrement) {
@@ -15,9 +16,13 @@ function Dish(props) {
       return;
     }
     if (isIncrement) {
-        isIncrement = false;
-    }else{
-        setCount((count) => count + 1);
+      isIncrement = false;
+    }
+    if(isFavorised) {
+      isFavorised = false;
+      return;
+    } else {
+      setCount((count) => count + 1);
     }
     props.onAddCommande({
       dish: props.content,
@@ -32,6 +37,10 @@ function Dish(props) {
   function handleIncrement() {
     isIncrement = true;
     setCount((count) => count + 1);
+  }
+
+  function handleFavorise() {
+    isFavorised = true;
   }
 
   function handleDecrement(event) {
@@ -57,12 +66,12 @@ function Dish(props) {
         <p className="dish-ingredients">{props.content.ingredients}</p>
         <p className="dish-price">{props.content.price} €</p>
         <div className="dish-actions">
-        <Increment
-          count={count}
-          increment={handleIncrement}
-          decrement={handleDecrement}
-        />
-        <Favorise />
+          <Increment
+            count={count}
+            increment={handleIncrement}
+            decrement={handleDecrement}
+          />
+          <Favorise handleFavorise={handleFavorise} />
         </div>
       </div>
     </div>

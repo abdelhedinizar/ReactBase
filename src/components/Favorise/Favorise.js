@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import "./Favorise.css";
 
-function Favorise() {
+function Favorise({handleFavorise}) {
   const [isFavorised, setIsFavorised] = useState(false);
 
   const handleToggle = () => {
+    handleFavorise();
     setIsFavorised(!isFavorised);
   };
 
