@@ -4,9 +4,10 @@ import "./OrderItem.css";
 function OrderItem({ orderItem, index, onDelete }) {
   const [swiped, setSwiped] = useState(false);
   const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
 
   const handleDelete = () => {
-    onDelete(orderItem); // Trigger the delete function passed as a prop
+    onDelete(orderItem);
   };
 
   const handleTouchStart = (e) => {
@@ -14,18 +15,20 @@ function OrderItem({ orderItem, index, onDelete }) {
   };
 
   const handleTouchMove = (e) => {
-    const touchEndX = e.touches[0].clientX;
-    const difference = touchStartX.current - touchEndX;
-
-    // If swipe distance is more than 50px to the left, trigger swipe action
-    if (difference > 50) {
-      setSwiped(true);
-    }
+    touchEndX.current = e.touches[0].clientX;
   };
 
   const handleTouchEnd = () => {
-    if (!swiped) {
-      setSwiped(false); // If swipe was not completed, reset
+    const difference = touchStartX.current - touchEndX.current;
+
+    // If swipe distance is more than 50px to the left, set swiped to true
+    if (difference > 50) {
+      setSwiped(true);
+    }
+
+    // If swipe distance is more than 50px to the right, set swiped to false (go back to original state)
+    if (difference < -50) {
+      setSwiped(false);
     }
   };
 
