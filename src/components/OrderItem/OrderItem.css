@@ -1,3 +1,4 @@
+/* Order Item */
 .order-item {
   position: relative;
   display: flex;
@@ -11,8 +12,55 @@
   width: 100%;
   max-width: 600px;
   margin: 10px auto;
+  transform: translateX(0);
+  /* Default, no translation */
 }
 
+/* Swiped left - move the entire card to the left */
+.order-item.swiped {
+  transform: translateX(-100px);
+  /* Adjust to match your desired swipe distance */
+  transition: transform 0.3s ease;
+}
+
+/* Delete button (hidden initially) */
+.swipe-delete {
+  position: absolute;
+  right: -100px;
+  /* Hide the button off the card */
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  background-color: #ff4b4b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: right 0.3s ease;
+}
+
+/* Make delete button visible when swiped */
+.order-item.swiped .swipe-delete {
+  right: 0;
+}
+
+/* Delete button icon */
+.delete-icon {
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Prevent button from overlapping text */
+.order-item.swiped .order-details {
+  /* Hide details when swiped */
+  transform: translateX(-100px);
+}
+
+.order-item.swiped .image {
+  transform: translateX(-100px);
+}
+
+/* Delete button for desktop view (X button) */
 .delete-button {
   position: absolute;
   right: 15px;
@@ -28,36 +76,6 @@
 
 .delete-button:hover {
   color: #ff0000;
-}
-
-.order-item.swiped .order-details {
-  transform: translateX(-100px);
-  /* Move order details left */
-  transition: transform 0.3s ease;
-}
-
-.swipe-delete {
-  position: absolute;
-  right: -100px;
-  top: 0;
-  bottom: 0;
-  width: 100px;
-  background-color: #ff4b4b;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: right 0.3s ease;
-}
-
-/* Visible when swiped */
-.order-item.swiped .swipe-delete {
-  right: 0;
-}
-
-.delete-icon {
-  color: white;
-  font-size: 24px;
-  cursor: pointer;
 }
 
 @media (max-width: 768px) {
@@ -81,24 +99,13 @@
     color: #777;
   }
 
-    .delete-button {
-      display: none;
-      /* Hide the delete button for mobile */
-    }
-  
-    .order-item {
-      overflow: hidden;
-    }
-  
-    .swipe-delete.visible {
-      right: 0;
-      /* Show swipe delete button */
-    }
-}
+  .delete-button {
+    display: none;
+  }
 
-.order-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 15px rgba(104, 66, 66, 0.2);
+  .order-item {
+    overflow: hidden;
+  }
 }
 
 .image {
@@ -112,20 +119,4 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
-
-.order-title {
-  font-size: 1.2em;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.order-price {
-  font-size: 1.1em;
-  color: #333;
-}
-
-.order-ingredients {
-  font-size: 0.9em;
-  color: #777;
 }
