@@ -30,7 +30,7 @@
   letter-spacing: 2px;
   text-transform: uppercase;
   /* Uppercase text like the image */
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
 
 .titre::before {
