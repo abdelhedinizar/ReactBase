@@ -1,10 +1,12 @@
 import "./Order.css";
 import OrderItem from "../OrderItem/OrderItem";
 function Order({ commande }) {
-  const [commandeList] = commande;
+  const [commandeList, setCommandeList] = commande;
 
   const handleDelete = (orderItem) => {
-    console.log("Delete item:", orderItem);
+    setCommandeList(
+      commandeList.filter((item) => item.dish._id !== orderItem.dish._id)
+    );
   };
 
   return (

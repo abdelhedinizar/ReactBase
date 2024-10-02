@@ -9,6 +9,7 @@ function OrderItem({ orderItem, index, onDelete }) {
 
   const handleDelete = () => {
     onDelete(orderItem);
+    setSwiped(false);
   };
 
   const handleTouchStart = (e) => {
