@@ -1,25 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "./OrderItem.css";
 
 function OrderItem({ orderItem, index, onDelete }) {
+  const [swiped, setSwiped] = useState(false);
+  const touchStartX = useRef(0);
+
   const handleDelete = () => {
     onDelete(orderItem); // Trigger the delete function passed as a prop
   };
 
-  const handleSwipe = () => {
-    setSwiped(true);
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
   };
 
-  const handleSwipeCancel = () => {
-    setSwiped(false);
+  const handleTouchMove = (e) => {
+    const touchEndX = e.touches[0].clientX;
+    const difference = touchStartX.current - touchEndX;
+
+    // If swipe distance is more than 50px to the left, trigger swipe action
+    if (difference > 50) {
+      setSwiped(true);
+    }
   };
 
-  const [swiped, setSwiped] = useState(false);
+  const handleTouchEnd = () => {
+    if (!swiped) {
+      setSwiped(false); // If swipe was not completed, reset
+    }
+  };
+
   return (
     <div
       key={index}
       className={`order-item ${swiped ? "swiped" : ""}`}
-      onTouchStart={handleSwipeCancel}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
     >
       <img
         src={orderItem.dish.image}
