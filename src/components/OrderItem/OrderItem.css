@@ -125,18 +125,17 @@
 .delete-button {
   position: absolute;
   right: 15px;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 5%;
   background-color: transparent;
   border: none;
   font-size: 20px;
   cursor: pointer;
-  color: #ff7070;
+  color: #ff1f1f;
   transition: color 0.3s;
 }
 
 .delete-button:hover {
-  color: #ff0000;
+  color: #bb0000;
 }
 
 @media (max-width: 768px) {
@@ -180,4 +179,24 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(-100px);
+    /* You can adjust the distance for better visuals */
+  }
+}
+
+/* Fade-out class */
+.order-item.fading-out {
+  animation: fadeOut 0.5s ease forwards;
+  pointer-events: none;
+  /* Disable interaction during fade out */
 }

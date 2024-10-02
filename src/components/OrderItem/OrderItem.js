@@ -4,12 +4,17 @@ import "./OrderItem.css";
 function OrderItem({ orderItem, index, onDelete }) {
   const [swiped, setSwiped] = useState(false);
   const [intro, setIntro] = useState(true);
+  const [fadingOut, setFadingOut] = useState(false);
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
 
   const handleDelete = () => {
-    onDelete(orderItem);
+    setFadingOut(true);
     setSwiped(false);
+    setTimeout(() => {
+      onDelete(orderItem);
+      setFadingOut(false);
+    }, 500); // Match the animation duration (0.5s)
   };
 
   const handleTouchStart = (e) => {
@@ -45,7 +50,9 @@ function OrderItem({ orderItem, index, onDelete }) {
   return (
     <div
       key={index}
-      className={`order-item ${swiped ? "swiped" : ""} ${intro ? "intro" : ""}`}
+      className={`order-item ${swiped ? "swiped" : ""} ${
+        intro ? "intro" : ""
+      } ${fadingOut ? "fading-out" : ""}`}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
