@@ -69,7 +69,7 @@
 
 /* Swiped left - move the entire card to the left */
 .order-item.swiped {
-  transform: translateX(-100px);
+  transform: translateX(-70px);
   /* Adjust to match your desired swipe distance */
   transition: transform 0.3s ease;
 }
@@ -77,10 +77,10 @@
 /* Delete button (hidden initially) */
 .swipe-delete {
   position: absolute;
-  right: -100px;
+  right: -70px;
   top: 0;
   bottom: 0;
-  width: 100px;
+  width: 70px;
   background-color: #ff4b4b;
   display: flex;
   justify-content: center;
@@ -114,11 +114,11 @@
 /* Prevent button from overlapping text */
 .order-item.swiped .order-details {
   /* Hide details when swiped */
-  transform: translateX(-100px);
+  transform: translateX(-70px);
 }
 
 .order-item.swiped .image {
-  transform: translateX(-100px);
+  transform: translateX(-70px);
 }
 
 /* Delete button for desktop view (X button) */
