@@ -3,6 +3,10 @@ import OrderItem from "../OrderItem/OrderItem";
 function Order({ commande }) {
   const [commandeList] = commande;
 
+  const handleDelete = (orderItem) => {
+    console.log("Delete item:", orderItem);
+  };
+
   return (
     <div className="content">
       <h2 className="titre">
@@ -10,14 +14,19 @@ function Order({ commande }) {
       </h2>
       <div className="orders">
         {commandeList.map((orderItem, index) => (
-          <OrderItem orderItem={orderItem} index={index} />
+          <OrderItem
+            key={index}
+            orderItem={orderItem}
+            index={index}
+            onDelete={handleDelete}
+          />
         ))}
       </div>
-        <h3>
-            Total:{" "}
-            {commandeList.reduce((acc, orderItem) => acc + orderItem.totalPrice, 0)}
-            €
-            </h3>
+      <h3>
+        Total:{" "}
+        {commandeList.reduce((acc, orderItem) => acc + orderItem.totalPrice, 0)}
+        €
+      </h3>
     </div>
   );
 }

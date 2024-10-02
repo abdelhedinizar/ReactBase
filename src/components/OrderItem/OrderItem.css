@@ -13,10 +13,87 @@
   margin: 10px auto;
 }
 
+.delete-button {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #ff7070;
+  transition: color 0.3s;
+}
+
+.delete-button:hover {
+  color: #ff0000;
+}
+
+.order-item.swiped .order-details {
+  transform: translateX(-100px);
+  /* Move order details left */
+  transition: transform 0.3s ease;
+}
+
+.swipe-delete {
+  position: absolute;
+  right: -100px;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  background-color: #ff4b4b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: right 0.3s ease;
+}
+
+/* Visible when swiped */
+.order-item.swiped .swipe-delete {
+  right: 0;
+}
+
+.delete-icon {
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
 @media (max-width: 768px) {
   .order-item {
     margin: 3px auto;
   }
+
+  .order-title {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  .order-price {
+    font-size: 1em;
+    color: #333;
+  }
+
+  .order-ingredients {
+    font-size: 0.8em;
+    color: #777;
+  }
+
+    .delete-button {
+      display: none;
+      /* Hide the delete button for mobile */
+    }
+  
+    .order-item {
+      overflow: hidden;
+    }
+  
+    .swipe-delete.visible {
+      right: 0;
+      /* Show swipe delete button */
+    }
 }
 
 .order-item:hover {
@@ -34,9 +111,7 @@
 .order-details {
   display: flex;
   flex-direction: column;
-  /* Stack title, price, and ingredients vertically */
   justify-content: space-between;
-  /* Even spacing */
 }
 
 .order-title {
