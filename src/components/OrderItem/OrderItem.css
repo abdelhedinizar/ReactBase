@@ -35,7 +35,7 @@
   }
 
   60% {
-    transform: translateX(0);
+    transform: translateX(-10px);
     /* Swipe back to the original position */
   }
 
