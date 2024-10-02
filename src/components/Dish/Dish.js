@@ -17,8 +17,7 @@ function Dish(props) {
     }
     if (isIncrement) {
       isIncrement = false;
-    }
-    if(isFavorised) {
+    } else if (isFavorised) {
       isFavorised = false;
       return;
     } else {
