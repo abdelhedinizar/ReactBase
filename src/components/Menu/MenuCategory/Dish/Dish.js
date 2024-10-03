@@ -27,14 +27,6 @@ function Dish(props) {
     } else {
       setCount((count) => count + 1);
     }
-    props.onAddCommande({
-      dish: props.content,
-      owner: "Nizar",
-      quantity: 1,
-      totalPrice: props.content.price,
-      status: "pending",
-      ingredients: props.content.ingredients,
-    });
     openModal();
   }
 
@@ -89,7 +81,7 @@ function Dish(props) {
         </div>
       </div>
       <Modal show={isModalOpen} onClose={closeModal}>
-        <DishModal dish={props.content} />
+        <DishModal dish={props.content} onClose={closeModal} onAddCommande={props.onAddCommande}/>
       </Modal>
     </>
   );
