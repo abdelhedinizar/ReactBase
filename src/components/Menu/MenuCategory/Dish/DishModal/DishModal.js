@@ -1,7 +1,9 @@
-export default function DishModal({dish}) {
+import "./DishModal.css";
+
+export default function DishModal({ dish }) {
   return (
     <>
-      <h2>This is the modal content!</h2>
+      <h2 className="model-title">{dish.name}</h2>
       <p>You can put any content here, including forms or other components.</p>
     </>
   );
