@@ -1,6 +1,6 @@
 import React from "react";
 import "./CartShoppingButton.css";
-import createRipple from "../../utils/Ripple";
+import createRipple from "../../../utils/Ripple";
 import { useNavigate } from "react-router-dom";
 
 const CartShoppingButton = ({ notificationCount }) => {

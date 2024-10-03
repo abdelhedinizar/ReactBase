@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import NavBarButton from "../NavBarButton/NavBarButton";
+import NavBarButton from "./NavBarButton/NavBarButton";
 import "./Header.css";
-import CartShoppingButton from "../CartShoppingButton/CartShoppingButton";
+import CartShoppingButton from "./CartShoppingButton/CartShoppingButton";
 
 function Header({ onToggleNavBar, commande }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

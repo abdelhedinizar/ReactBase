@@ -2,7 +2,7 @@ import "./Menu.css";
 import React, { useEffect } from "react";
 import CommandeContr from "../../controllers/Commande";
 import { fetchDishList } from "../../services/DishsServ";
-import MenuCategory from "../MenuCategory/MenuCategory";
+import MenuCategory from "./MenuCategory/MenuCategory";
 import createRipple from "../../utils/Ripple";
 import { useNavigate } from 'react-router-dom';
 

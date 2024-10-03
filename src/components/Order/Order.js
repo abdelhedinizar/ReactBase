@@ -1,5 +1,5 @@
 import "./Order.css";
-import OrderItem from "../OrderItem/OrderItem";
+import OrderItem from "./OrderItem/OrderItem";
 function Order({ commande }) {
   const [commandeList, setCommandeList] = commande;
 

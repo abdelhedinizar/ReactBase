@@ -1,5 +1,5 @@
 import "./MenuCategory.css";
-import Dish from "./../Dish/Dish";
+import Dish from "./Dish/Dish";
 import React, { useState, useEffect } from "react";
 
 export default function MenuCategory({
