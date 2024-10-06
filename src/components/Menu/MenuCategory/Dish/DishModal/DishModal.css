@@ -3,6 +3,7 @@
 }
 
 .modal-cancel {
+  padding: 15px;
   font-weight: bold;
   transform: translateX(-5%);
   color: rgb(195, 107, 0);
@@ -34,6 +35,7 @@
 }
 
 .modal-add {
+  padding: 15px;
   font-weight: bold;
   transform: translateX(5%);
   color: white;
@@ -76,4 +78,24 @@
   background-color: initial;
   background-size: 150% !important;
   background-position-x: 25% !important;
+}
+
+.modal-footer {
+  margin: 20px;
+}
+
+.model-content {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+
+.model-image {
+  width: 50%;
+  object-fit: cover;
+  margin-right: 15px;
+}
+
+.modal-details {
+  width: 50%;
 }

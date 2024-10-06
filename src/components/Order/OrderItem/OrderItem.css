@@ -13,7 +13,6 @@
   max-width: 600px;
   margin: 10px auto;
   transform: translateX(0);
-  /* Default, no translation */
 }
 
 .order-item.intro {

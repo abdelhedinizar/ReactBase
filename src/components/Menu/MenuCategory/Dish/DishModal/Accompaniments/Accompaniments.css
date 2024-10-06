@@ -1,0 +1,86 @@
+/* Main container for accompaniments */
+.accompaniments {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Each title (AccompanimentsTitle) section */
+.accompaniments h3 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 12px;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 6px;
+  font-family: "Roboto", sans-serif;
+}
+
+/* Each individual accompaniment option */
+.accompaniment {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 8px 0;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s ease;
+}
+
+/* Style for label of the accompaniment */
+.accompaniment label {
+  font-size: 1rem;
+  color: #555;
+  font-family: "Roboto", sans-serif;
+}
+
+/* Accompaniment hover effect */
+.accompaniment:hover {
+  background-color: #e9ecef;
+}
+
+/* Checkbox styling */
+.accompaniment input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+/* Add some spacing around the checkbox */
+.accompaniment input[type="checkbox"] + label {
+  margin-left: 10px;
+}
+
+/* Responsive design for mobile screens */
+@media (max-width: 768px) {
+  .accompaniments {
+    padding: 15px;
+  }
+
+  .accompaniments h3 {
+    font-size: 1.2rem;
+  }
+
+  .accompaniment {
+    padding: 8px;
+  }
+
+  .accompaniment label {
+    font-size: 0.9rem;
+  }
+
+  .accompaniment input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+  }
+  .accompaniment div {
+    padding: 20px !important;
+  }
+}
