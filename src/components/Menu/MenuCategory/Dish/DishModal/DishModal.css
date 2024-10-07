@@ -99,6 +99,7 @@
 
   .model-image {
     width: 100% !important;
+    height: 30vh !important;
   }
 
   .modal-details {
