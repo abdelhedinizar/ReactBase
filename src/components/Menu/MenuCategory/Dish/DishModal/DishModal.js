@@ -5,8 +5,11 @@ import "./DishModal.css";
 export default function DishModal({ dish, onClose, onAddCommande }) {
   const [selectedAccom, setSelectedAccom] = useState([]);
 
-   const selectedAccomPrices = selectedAccom.map(accom => accom.price);
-  const totalAccomPrice = selectedAccomPrices.reduce((acc, price) => acc + price, 0);
+  const selectedAccomPrices = selectedAccom.map((accom) => accom.price);
+  const totalAccomPrice = selectedAccomPrices.reduce(
+    (acc, price) => acc + price,
+    0
+  );
   const totalPrice = dish.price + totalAccomPrice;
 
   function AddOrder() {
@@ -17,11 +20,12 @@ export default function DishModal({ dish, onClose, onAddCommande }) {
       totalPrice: totalPrice,
       status: "pending",
       ingredients: dish.ingredients,
+      addedAccompaniments: selectedAccom,
     });
     onClose();
   }
   return (
-    <div className="model-content">
+    <div className="dish-modal-content">
       <img src={dish.image} alt={dish.name} className="model-image" />
       <div className="modal-details">
         <h2 className="model-title">{dish.name}</h2>
@@ -29,7 +33,11 @@ export default function DishModal({ dish, onClose, onAddCommande }) {
           <p>
             <strong>Price:</strong> {totalPrice.toFixed(2)} €
           </p>
-          <Accompaniments accompaniments={dish.Accompaniments} selectedAccom={selectedAccom} setSelectedAccom={setSelectedAccom} />
+          <Accompaniments
+            accompaniments={dish.Accompaniments}
+            selectedAccom={selectedAccom}
+            setSelectedAccom={setSelectedAccom}
+          />
         </div>
         <div className="modal-footer">
           <button className="modal-cancel" onClick={onClose}>

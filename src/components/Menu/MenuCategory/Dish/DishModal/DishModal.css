@@ -84,10 +84,26 @@
   margin: 20px;
 }
 
-.model-content {
+.dish-modal-content {
   position: relative;
   display: flex;
   flex-direction: row;
+}
+
+@media (max-width: 768px) {
+  .dish-modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column !important;
+  }
+
+  .model-image {
+    width: 100% !important;
+  }
+
+    .modal-details {
+      width: 100% !important;
+    }
 }
 
 .model-image {
