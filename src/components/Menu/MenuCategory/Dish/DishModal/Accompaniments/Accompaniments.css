@@ -69,7 +69,8 @@
   }
 
   .accompaniment {
-    padding: 8px;
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
   }
 
   .accompaniment label {
