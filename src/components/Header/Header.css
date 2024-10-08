@@ -1,7 +1,6 @@
 @media (max-width: 768px) {
   header h1 {
     font-size: 1.5em !important;
-    /* Diminuer la taille du titre pour les petits écrans */
   }
 }
 
@@ -13,22 +12,15 @@
   align-items: center;
   justify-content: space-between;
   background: linear-gradient(135deg, #500000, #841c2e);
-  padding: 10px 20px;
-  /* Gradient Background */
   box-shadow: 0 4px 6px rgba(132, 28, 46, 0.4);
   /* Subtle shadow for depth */
   color: #fff;
 }
 
 header h1 {
-  font-size: 48px;
-  /* Taille du texte */
+  font-size: 26px;
   font-weight: bold;
-  /* Mettre en gras */
   text-transform: uppercase;
-  /* Majuscules pour un effet stylé */
   letter-spacing: 3px;
-  /* Espacement entre les lettres */
   margin: 0;
-  /* Pas de marge */
 }

@@ -4,13 +4,9 @@
   flex-direction: column;
   align-items: center;
   background-color: #fff;
-  /* White background for the card */
   border-radius: 15px;
-  /* Rounded corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  /* Soft shadow for depth */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  /* Smooth transitions */
   overflow: hidden;
 }
 
@@ -40,7 +36,7 @@
 
 .image-item {
   width: 100%;
-  height: 200px;
+  height: 150px;
   object-fit: cover;
 }
 .dish-details {
@@ -51,12 +47,14 @@
 }
 
 .dish-title {
-  font-size: 1.2em;
+  font-size: 1.1em;
   font-weight: bold;
   color: #333;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  margin-block-start: 0.6em;
+  margin-block-end: 0.6em;
 }
 
 .dish-ingredients {
