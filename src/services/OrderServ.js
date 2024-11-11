@@ -37,4 +37,20 @@ const createSession = async (orderId) => {
     throw error;
   }
 };
-export { createOrder, createSession };
+
+const getOrderBySessionId = async (sessionId) => {
+  try {
+    const response = await fetch(
+      `${process.env.REACT_APP_BACK_API_URL}/orders?sessionId=${sessionId}`
+    );
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+    return data.data;
+  } catch (error) {
+    console.error("Error fetching dish list:", error);
+    throw error;
+  }
+};
+export { createOrder, createSession, getOrderBySessionId };

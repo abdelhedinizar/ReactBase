@@ -4,6 +4,7 @@
   /* Light background similar to your image */
   text-align: center;
   font-family: "Arial", sans-serif;
+  height: 100%;
 }
 
 .orders {

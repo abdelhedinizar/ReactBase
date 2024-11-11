@@ -1,0 +1,80 @@
+.order-success,
+.order-failure,
+.order-error,
+.order-invalid {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  color: #333;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+}
+
+.order-status-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+
+.order-success {
+  background-color: #dfa1ab;
+  color: #500000;
+  border: 1px solid #500000;
+}
+@media (max-width: 768px) {
+  .order-success,
+  .order-failure,
+  .order-error,
+  .order-invalid {
+    max-width: 80%;
+  }
+}
+
+.order-failure {
+  background-color: #ffe6e6;
+  color: #a12828;
+  border: 1px solid #ffadad;
+}
+
+.order-error {
+  background-color: #fff3e6;
+  color: #a5642d;
+  border: 1px solid #ffbf8a;
+}
+
+.order-invalid {
+  background-color: #e6e6ff;
+  color: #4d4d99;
+  border: 1px solid #a5a5ff;
+}
+
+h2 {
+  font-size: 1.8em;
+  margin-bottom: 10px;
+}
+
+p {
+  margin: 8px 0;
+}
+
+.order-details-success {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.order-details p {
+  font-size: 1em;
+  margin: 5px 0;
+}
+
+strong {
+  font-weight: bold;
+  color: #333;
+}

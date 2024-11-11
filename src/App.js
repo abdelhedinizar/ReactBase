@@ -5,13 +5,34 @@ import Menu from "./components/Menu/Menu";
 import NavBar from "./components/NavBar/NavBar";
 import Header from "./components/Header/Header";
 import Order from "./components/Order/Order";
+import Login from "./components/Login/Login";
+import OrderSuccess from "./components/Order/OrderSuccess/OrderSuccess";
+
 import { useState } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 
 function App() {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [dishList, setDishList] = useState([]);
   const [commande, setCommande] = useState([]);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const handleLogin = () => {
+    setIsAuthenticated(true);
+  };
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+  };
+
+  const ProtectedRoute = ({ children }) => {
+    return isAuthenticated ? children : <Navigate to="/login" />;
+  };
 
   // This function will toggle the NavBar
   const toggleNavBar = () => {
@@ -26,6 +47,7 @@ function App() {
 
           <div className="main-content">
             <Routes>
+              <Route path="/login" element={<Login onLogin={handleLogin} />} />
               <Route
                 path="/"
                 element={
@@ -42,9 +64,10 @@ function App() {
                 path="/commande"
                 element={<Order commande={[commande, setCommande]} />}
               />
+              <Route path="/order-success" element={<OrderSuccess />} />
             </Routes>
-            <Footer />
           </div>
+          <Footer />
         </div>
         <div className={`navbar-layout ${isNavOpen ? "open" : ""}`}>
           <NavBar />
