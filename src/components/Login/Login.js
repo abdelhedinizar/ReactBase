@@ -3,11 +3,24 @@ import { useNavigate } from "react-router-dom";
 import Background from "../Utils/Background/Background";
 import { signin } from "../../services/AuthServ";
 import "./Login.css";
+import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props"; // import render-props version
 
 const Login = ({ onLogin }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+
+  const responseFacebook = (response) => {
+    if (response.status !== "unknown") {
+      console.log("Login Success:", response);
+      // Handle response data, such as storing access token
+      sessionStorage.setItem("authToken", response.accessToken);
+      onLogin();
+      navigate("/");
+    } else {
+      console.log("User cancelled login or did not fully authorize.");
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,7 +46,7 @@ const Login = ({ onLogin }) => {
         </p>
         <form onSubmit={handleSubmit}>
           <div className="input-container">
-            <i className="fas fa-utensils"></i> {/* Fork icon */}
+            <i className="fas fa-utensils"></i>
             <input
               type="text"
               placeholder="Username"
@@ -43,7 +56,7 @@ const Login = ({ onLogin }) => {
             />
           </div>
           <div className="input-container">
-            <i className="fas fa-lock"></i> {/* Lock icon */}
+            <i className="fas fa-lock"></i>
             <input
               type="password"
               placeholder="Password"
@@ -57,14 +70,22 @@ const Login = ({ onLogin }) => {
         <p className="p-link">
           Or connect with{" "}
           <span>
-            <i class="fa-brands fa-facebook"></i>
+            <FacebookLogin
+              appId="579488631281117"
+              autoLoad={false}
+              fields="name,email,picture"
+              callback={responseFacebook}
+              render={(renderProps) => (
+                  <i onClick={renderProps.onClick} className="fa-brands fa-facebook"></i>
+              )}
+            />
           </span>
-          <span>
+           <span>
             <i class="fa-brands fa-instagram"></i>
           </span>
           <span>
             <i class="fa-brands fa-google-plus-g"></i>
-          </span>
+            </span>
         </p>
         <p className="p-link">
           Don't have an account? <a href="/signup">Sign up here</a>

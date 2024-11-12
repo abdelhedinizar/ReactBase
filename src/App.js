@@ -16,6 +16,7 @@ import {
   Route,
   Routes,
   Navigate,
+  useLocation 
 } from "react-router-dom";
 
 function App() {
@@ -99,7 +100,7 @@ function App() {
           <Footer />
         </div>
         <div className={`navbar-layout ${isNavOpen ? "open" : ""}`}>
-          <NavBar />
+          <NavBar logout={handleLogout} isAuthenticated={isAuthenticated}/>
         </div>
       </div>
     </Router>
