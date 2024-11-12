@@ -6,9 +6,11 @@ import NavBar from "./components/NavBar/NavBar";
 import Header from "./components/Header/Header";
 import Order from "./components/Order/Order";
 import Login from "./components/Login/Login";
+import Signup from "./components/SignUp/SignUp";
 import OrderSuccess from "./components/Order/OrderSuccess/OrderSuccess";
+import { getUser } from "./services/AuthServ";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -21,6 +23,26 @@ function App() {
   const [dishList, setDishList] = useState([]);
   const [commande, setCommande] = useState([]);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [user, setUser] = useState(null);
+
+  const verifyUser = async () => {
+    const token = sessionStorage.getItem("authToken");
+    if (token) {
+      try {
+        const userData = await getUser(token); // Fetch user data
+        setUser(userData);
+        setIsAuthenticated(true);
+      } catch (error) {
+        console.error("Token verification failed:", error);
+        setIsAuthenticated(false);
+        sessionStorage.removeItem("authToken"); // Remove token if invalid
+      }
+    }
+  };
+
+  useEffect(() => {
+    verifyUser();
+  }, []);
 
   const handleLogin = () => {
     setIsAuthenticated(true);
@@ -28,6 +50,8 @@ function App() {
 
   const handleLogout = () => {
     setIsAuthenticated(false);
+    setUser(null);
+    sessionStorage.removeItem("authToken");
   };
 
   const ProtectedRoute = ({ children }) => {
@@ -43,11 +67,16 @@ function App() {
     <Router>
       <div className="App">
         <div className={`screen-layout ${isNavOpen ? "shifted" : ""}`}>
-          <Header onToggleNavBar={toggleNavBar} commande={commande} />
+          <Header
+            onToggleNavBar={toggleNavBar}
+            commande={commande}
+            isAuthenticated={isAuthenticated}
+          />
 
           <div className="main-content">
             <Routes>
               <Route path="/login" element={<Login onLogin={handleLogin} />} />
+              <Route path="/signup" element={<Signup />} />
               <Route
                 path="/"
                 element={

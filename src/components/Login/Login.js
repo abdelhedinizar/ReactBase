@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Background from '../Utils/Background/Background';
+import Background from "../Utils/Background/Background";
+import { signin } from "../../services/AuthServ";
 import "./Login.css";
 
 const Login = ({ onLogin }) => {
@@ -10,11 +11,14 @@ const Login = ({ onLogin }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (username === "admin" && password === "password") {
+    try {
+      const token = await signin({ email: username, password });
+      sessionStorage.setItem("authToken", token);
       onLogin();
-      navigate("/"); // Redirect to home or protected page
-    } else {
-      alert("Invalid credentials");
+      navigate("/");
+    } catch (error) {
+      console.error("Login failed:", error);
+      alert("Invalid credentials, please try again.");
     }
   };
 
