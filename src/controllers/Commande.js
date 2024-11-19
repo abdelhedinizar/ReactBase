@@ -1,5 +1,9 @@
 function addCommande([commande, setCommande], commandeDishs) {
   setCommande([...commande, commandeDishs]);
+  sessionStorage.setItem(
+    "commandeDish",
+    JSON.stringify([...commande, commandeDishs])
+  );
 }
 
 function removeLastCommande([commande, setCommande], dishId) {
@@ -13,6 +17,7 @@ function removeLastCommande([commande, setCommande], dishId) {
     const updatedCommande = commande.slice();
     updatedCommande.splice(commande.length - 1 - index, 1); // Adjust the index after reversing
     setCommande(updatedCommande);
+    sessionStorage.setItem("commandeDish", JSON.stringify(updatedCommande));
   }
 }
 const CommandeContr = { addCommande, removeLastCommande };

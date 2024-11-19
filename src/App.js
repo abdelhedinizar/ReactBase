@@ -25,6 +25,12 @@ function App() {
   const [commande, setCommande] = useState([]);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
+  const getCommand = () => {
+    const commandeDish = JSON.parse(sessionStorage.getItem("commandeDish"));
+    if (commandeDish) {
+      setCommande(commandeDish);
+    }
+  };
 
   const verifyUser = async () => {
     const token = sessionStorage.getItem("authToken");
@@ -42,6 +48,7 @@ function App() {
   };
 
   useEffect(() => {
+    getCommand();
     verifyUser();
   }, []);
 

@@ -4,11 +4,12 @@ import { createOrder, createSession } from "../../services/OrderServ";
 
 function Order({ commande, user }) {
   const [commandeList, setCommandeList] = commande;
-
   const handleDelete = (orderItem) => {
-    setCommandeList(
-      commandeList.filter((item) => item.dish._id !== orderItem.dish._id)
+    const newCommandeList = commandeList.filter(
+      (item) => item.dish._id !== orderItem.dish._id
     );
+    setCommandeList(newCommandeList);
+    sessionStorage.setItem("commandeDish", JSON.stringify(newCommandeList));
   };
 
   const orderCommande = async () => {
@@ -26,13 +27,19 @@ function Order({ commande, user }) {
         }),
       };
     });
-    let orderData = {
-      user: user._id,
-      dishes: dishs,
-      paymentMethod: "card",
-    };
-    const order = await createOrder(orderData);
-    window.location.href = await createSession(order.data.order.id);
+    sessionStorage.setItem("commandeDish", JSON.stringify(commandeList));
+    if (user) {
+      let orderData = {
+        user: user._id,
+        dishes: dishs,
+        paymentMethod: "card",
+      };
+      const order = await createOrder(orderData);
+      sessionStorage.setItem("order", order);
+      window.location.href = await createSession(order.data.order.id);
+    } else {
+      window.location.href = "/login";
+    }
   };
   return (
     <div className="content">
