@@ -55,6 +55,7 @@ function App() {
     sessionStorage.removeItem("authToken");
   };
 
+  // eslint-disable-next-line no-unused-vars
   const ProtectedRoute = ({ children }) => {
     return isAuthenticated ? children : <Navigate to="/login" />;
   };
@@ -115,7 +116,6 @@ function App() {
 }
 
 const About = () => <h2>About Page</h2>;
-const Services = () => <h2>Services Page</h2>;
 const Contact = () => <h2>Contact Page</h2>;
 
 export default App;
