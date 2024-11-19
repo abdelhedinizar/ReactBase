@@ -81,7 +81,12 @@ function Dish(props) {
         </div>
       </div>
       <Modal show={isModalOpen} onClose={closeModal}>
-        <DishModal dish={props.content} onClose={closeModal} onAddCommande={props.onAddCommande}/>
+        <DishModal
+          dish={props.content}
+          onClose={closeModal}
+          onAddCommande={props.onAddCommande}
+          user={props.user}
+        />
       </Modal>
     </>
   );

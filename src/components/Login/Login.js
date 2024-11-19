@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Background from "../Utils/Background/Background";
-import { signin } from "../../services/AuthServ";
+import { signin, signupWithSocialMedia } from "../../services/AuthServ";
 import "./Login.css";
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props"; // import render-props version
 
@@ -10,11 +10,11 @@ const Login = ({ onLogin }) => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const responseFacebook = (response) => {
+  const responseFacebook = async (response) => {
     if (response.status !== "unknown") {
       console.log("Login Success:", response);
-      // Handle response data, such as storing access token
-      sessionStorage.setItem("authToken", response.accessToken);
+      const resp = await signupWithSocialMedia(response);
+      sessionStorage.setItem("authToken", resp);
       onLogin();
       navigate("/");
     } else {
@@ -76,16 +76,19 @@ const Login = ({ onLogin }) => {
               fields="name,email,picture"
               callback={responseFacebook}
               render={(renderProps) => (
-                  <i onClick={renderProps.onClick} className="fa-brands fa-facebook"></i>
+                <i
+                  onClick={renderProps.onClick}
+                  className="fa-brands fa-facebook"
+                ></i>
               )}
             />
           </span>
-           <span>
+          <span>
             <i class="fa-brands fa-instagram"></i>
           </span>
           <span>
             <i class="fa-brands fa-google-plus-g"></i>
-            </span>
+          </span>
         </p>
         <p className="p-link">
           Don't have an account? <a href="/signup">Sign up here</a>

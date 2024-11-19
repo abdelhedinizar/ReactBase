@@ -2,7 +2,7 @@ import { useState } from "react";
 import Accompaniments from "./Accompaniments/Accompaniments";
 import "./DishModal.css";
 
-export default function DishModal({ dish, onClose, onAddCommande }) {
+export default function DishModal({ dish, onClose, onAddCommande, user }) {
   const [selectedAccom, setSelectedAccom] = useState([]);
 
   const selectedAccomPrices = selectedAccom.map((accom) => accom.price);
@@ -15,7 +15,7 @@ export default function DishModal({ dish, onClose, onAddCommande }) {
   function AddOrder() {
     onAddCommande({
       dish: dish,
-      owner: "Nizar",
+      owner: user,
       quantity: 1,
       totalPrice: totalPrice,
       status: "pending",

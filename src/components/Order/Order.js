@@ -2,7 +2,7 @@ import "./Order.css";
 import OrderItem from "./OrderItem/OrderItem";
 import { createOrder, createSession } from "../../services/OrderServ";
 
-function Order({ commande }) {
+function Order({ commande, user }) {
   const [commandeList, setCommandeList] = commande;
 
   const handleDelete = (orderItem) => {
@@ -27,7 +27,7 @@ function Order({ commande }) {
       };
     });
     let orderData = {
-      user: "66f9d090a984d05de0023eaf",
+      user: user._id,
       dishes: dishs,
       paymentMethod: "card",
     };

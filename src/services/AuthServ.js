@@ -66,4 +66,27 @@ const getUser = async (token) => {
   }
 };
 
-export { signin, signup, getUser };
+const signupWithSocialMedia = async (res) => {
+  try {
+    const response = await fetch(
+      `${process.env.REACT_APP_BACK_API_URL}/users/signinWithSocialMedia`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(res),
+      }
+    );
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+    return data.token;
+  } catch (error) {
+    console.error("Error fetching dish list:", error);
+    throw error;
+  }
+};
+
+export { signin, signup, getUser, signupWithSocialMedia };

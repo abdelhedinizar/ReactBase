@@ -6,14 +6,17 @@ main {
 }
 
 main h2 {
-  font-size: 28px;
-  font-weight: bold;
+  font-size: 48px;
   position: relative;
   display: inline-block;
   color: #333;
   letter-spacing: 2px;
   text-transform: uppercase;
   margin-bottom: 20px;
+  font-family: "Rouge Script", cursive;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
 
 main h2::before {
@@ -52,6 +55,17 @@ main h2::after {
   transform: translateX(300px);
 }
 
+.App {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.main-content {
+  height: 95%;
+}
+
 .navbar-layout {
   width: 300px;
   height: 100%;
@@ -66,14 +80,4 @@ main h2::after {
 
 .navbar-layout.open {
   transform: translateX(0);
-}
-.App {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.main-content {
-  height: 95%;
 }

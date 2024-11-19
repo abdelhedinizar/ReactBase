@@ -7,6 +7,7 @@ import Header from "./components/Header/Header";
 import Order from "./components/Order/Order";
 import Login from "./components/Login/Login";
 import Signup from "./components/SignUp/SignUp";
+import Purchases from "./components/Purchase/Purchase";
 import OrderSuccess from "./components/Order/OrderSuccess/OrderSuccess";
 import { getUser } from "./services/AuthServ";
 
@@ -16,7 +17,6 @@ import {
   Route,
   Routes,
   Navigate,
-  useLocation 
 } from "react-router-dom";
 
 function App() {
@@ -84,15 +84,18 @@ function App() {
                   <Menu
                     dishes={[dishList, setDishList]}
                     commandeDishs={[commande, setCommande]}
+                    user={user}
                   />
                 }
               />
               <Route path="/about" element={<About />} />
-              <Route path="/services" element={<Services />} />
+              <Route path="/purchases" element={<Purchases />} />
               <Route path="/contact" element={<Contact />} />
               <Route
                 path="/commande"
-                element={<Order commande={[commande, setCommande]} />}
+                element={
+                  <Order commande={[commande, setCommande]} user={user} />
+                }
               />
               <Route path="/order-success" element={<OrderSuccess />} />
             </Routes>
@@ -100,7 +103,11 @@ function App() {
           <Footer />
         </div>
         <div className={`navbar-layout ${isNavOpen ? "open" : ""}`}>
-          <NavBar logout={handleLogout} isAuthenticated={isAuthenticated}/>
+          <NavBar
+            logout={handleLogout}
+            isAuthenticated={isAuthenticated}
+            user={user}
+          />
         </div>
       </div>
     </Router>

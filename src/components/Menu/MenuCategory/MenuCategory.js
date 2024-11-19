@@ -7,6 +7,7 @@ export default function MenuCategory({
   dishes,
   onAddCommande,
   onRemoveCommande,
+  user
 }) {
   const [dishList, setDishList] = useState([]);
   useEffect(() => {
@@ -24,6 +25,7 @@ export default function MenuCategory({
                 key={dish.name}
                 onAddCommande={onAddCommande}
                 onRemoveCommande={onRemoveCommande}
+                user={user}
               />
             );
           })}

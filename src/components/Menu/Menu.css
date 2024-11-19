@@ -58,10 +58,6 @@
     rgba(251, 140, 0, 0.2) 0rem 0.5rem 0.625rem -0.3125rem;
 }
 
-.menucolor {
-  
-}
-
 @media (max-width: 768px) {
   .fixed-button {
     width: 160px;

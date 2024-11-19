@@ -6,7 +6,7 @@ import MenuCategory from "./MenuCategory/MenuCategory";
 import createRipple from "../../utils/Ripple";
 import { useNavigate } from "react-router-dom";
 
-function Menu({ dishes, commandeDishs }) {
+function Menu({ dishes, commandeDishs, user }) {
   const navigate = useNavigate();
   const [dishList, setDishList] = dishes;
   const [commande, setCommande] = commandeDishs;
@@ -45,18 +45,21 @@ function Menu({ dishes, commandeDishs }) {
         dishes={dishList}
         onAddCommande={handleAddCommande}
         onRemoveCommande={handleRemoveLastCommande}
+        user={user}
       />
       <MenuCategory
         category="Pasta"
         dishes={dishList}
         onAddCommande={handleAddCommande}
         onRemoveCommande={handleRemoveLastCommande}
+        user={user}
       />
       <MenuCategory
         category="Burgers"
         dishes={dishList}
         onAddCommande={handleAddCommande}
         onRemoveCommande={handleRemoveLastCommande}
+        user={user}
       />
       <button className="fixed-button" onClick={handleValidCommande}>
         Order
