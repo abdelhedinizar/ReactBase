@@ -3,13 +3,14 @@ import { useNavigate } from "react-router-dom";
 import Background from "../Utils/Background/Background";
 import { signin, signupWithSocialMedia } from "../../services/AuthServ";
 import "./Login.css";
-import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props"; // import render-props version
+//import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props"; // import render-props version
 
 const Login = ({ onLogin }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
+  // eslint-disable-next-line no-unused-vars
   const responseFacebook = async (response) => {
     if (response.status !== "unknown") {
       console.log("Login Success:", response);
@@ -70,7 +71,8 @@ const Login = ({ onLogin }) => {
         <p className="p-link">
           Or connect with{" "}
           <span>
-            <FacebookLogin
+          {/*
+          <FacebookLogin
               appId="579488631281117"
               autoLoad={false}
               fields="name,email,picture"
@@ -82,6 +84,7 @@ const Login = ({ onLogin }) => {
                 ></i>
               )}
             />
+           */}  
           </span>
           <span>
             <i class="fa-brands fa-instagram"></i>
