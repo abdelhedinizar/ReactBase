@@ -1,6 +1,25 @@
+import { useEffect, useState } from "react";
+//import HorizontalScroller from "./HorizontalScroller/HorizontalScroller";
+import PurchaseItem from "./HorizontalScroller/PurchaseItem/PurchaseItem";
+import { getMyCurrentOrders } from "../../services/OrderServ";
 import "./Purchase.css";
 
-const Purchase = () => {
+const Purchase = ({ user }) => {
+  const [orders, setOrders] = useState([]);
+
+  const getYourPurchase = async () => {
+    const data = await getMyCurrentOrders(user);
+    const orders = data.orders;
+    setOrders(orders);
+  };
+
+  useEffect(() => {
+    if (user) {
+      getYourPurchase();
+    }
+  });
+
+  /*
   const sampleOrder = {
     id: 789,
     tableNumber: 12,
@@ -43,60 +62,19 @@ const Purchase = () => {
     orderTime: "8:15 PM",
     imageUrl: "/images/ravioli.jpg",
   };
-
-  const OrderCard = ({ order }) => {
-    const { id, tableNumber, items, totalPrice, status, orderTime, imageUrl } =
-      order;
-
-    return (
-      <div className="compact-card">
-        {/* Image Header */}
-        <div className="card-header">
-          <img src={imageUrl} alt={`Order ${id}`} className="header-image" />
-          <div className={`status-badge ${status.toLowerCase()}`}>{status}</div>
-        </div>
-
-        {/* Content Section */}
-        <div className="card-content">
-          <div className="info-row">
-            <h2>Table {tableNumber}</h2>
-            <span className="order-id">Order #{id}</span>
-          </div>
-
-          {/* Items as Badges */}
-          <div className="items-badges">
-            {items.map((item, index) => (
-              <span key={index} className="item-badge">
-                {item.name}
-              </span>
-            ))}
-          </div>
-
-          {/* Total Price and Time */}
-          <div className="details">
-            <p className="total-price">
-              <strong>${totalPrice.toFixed(2)}</strong>
-            </p>
-            <p className="time">{orderTime}</p>
-          </div>
-        </div>
-
-        {/* Footer Actions */}
-        <div className="card-actions">
-          <button className="action-btn">View</button>
-          <button className="complete-btn">Complete</button>
-        </div>
-      </div>
-    );
-  };
-
+*/
   return (
-    <div
-      style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}
+    <div className="purchase-container"
     >
-      <OrderCard order={sampleOrder} />
-      <OrderCard order={secondOrder} />
-      <OrderCard order={third} />
+      {orders?.length > 0 &&
+        orders.map((order) => {
+          return <PurchaseItem order={order} key={order._id} />;
+        })}
+
+
+      {/*
+    <HorizontalScroller dishes={dishes}></HorizontalScroller>
+     */}
     </div>
   );
 };

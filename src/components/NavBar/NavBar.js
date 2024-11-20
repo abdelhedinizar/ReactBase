@@ -2,14 +2,25 @@ import React from "react";
 import "./NavBar.css";
 
 const NavBar = ({ logout, isAuthenticated, user }) => {
+  function isValidUrl(string) {
+    try {
+      new URL(string);
+      return true;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  const photoSrc = user
+    ? isValidUrl(user?.photo)
+      ? user.photo
+      : `/images/${user?.photo}`
+    : "/images/Default.jpg";
+
   return (
     <div className="navbar-layout open">
       <div className="user-section">
-        <img
-          className="user-image"
-          src={user?.photo || "/images/default.jpg"}
-          alt="User"
-        />
+        <img className="user-image" src={photoSrc} alt="User" />
         <div className="welcome-message">
           Welcome {user?.name ? user.name : "Guest"}!
           <br />

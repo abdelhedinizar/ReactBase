@@ -25,7 +25,7 @@ function App() {
   const [commande, setCommande] = useState([]);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
-  const getCommand = () => {
+  const getCommandFromSessionStorage = () => {
     const commandeDish = JSON.parse(sessionStorage.getItem("commandeDish"));
     if (commandeDish) {
       setCommande(commandeDish);
@@ -48,7 +48,7 @@ function App() {
   };
 
   useEffect(() => {
-    getCommand();
+    getCommandFromSessionStorage();
     verifyUser();
   }, []);
 
@@ -97,7 +97,10 @@ function App() {
                 }
               />
               <Route path="/about" element={<About />} />
-              <Route path="/purchases" element={<Purchases />} />
+              <Route
+                path="/purchases"
+                element={<Purchases dishes={commande} user={user} />}
+              />
               <Route path="/contact" element={<Contact />} />
               <Route
                 path="/commande"
