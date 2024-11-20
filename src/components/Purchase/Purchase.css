@@ -11,3 +11,20 @@ body {
   gap: 12px;
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
 }
+
+@media (max-width: 768px) {
+  .purchase-container {
+    display: flex;
+    scroll-snap-type: x mandatory;
+    overflow-x: auto;
+    width: 100%;
+    margin: 0px auto;
+  }
+
+  .purchase-container > * {
+    flex: 0 0 auto;
+    /* Set a fixed width for each dish item */
+    scroll-snap-align: start;
+    /* Aligns dish items nicely when scrolling */
+  }
+}
