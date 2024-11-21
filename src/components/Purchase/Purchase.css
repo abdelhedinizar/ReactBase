@@ -6,23 +6,26 @@ body {
   padding: 0;
 }
 
-.purchase-container {
+.purchase {
+  padding: 8px;
+}
+
+.scroll-container {
   display: grid;
   gap: 12px;
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
 }
 
 @media (max-width: 768px) {
-  .purchase-container {
+  .scroll-container {
     display: flex;
     scroll-snap-type: x mandatory;
     overflow-x: auto;
     width: 100%;
     margin: 0px auto;
-    margin-left: 16px;
   }
 
-  .purchase-container > * {
+  .scroll-container > * {
     flex: 0 0 auto;
     scroll-snap-align: start;
   }

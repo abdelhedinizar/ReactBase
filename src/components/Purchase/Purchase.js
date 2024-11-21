@@ -20,15 +20,17 @@ const Purchase = ({ user }) => {
   });
 
   return (
-    <div className="purchase-container">
-      {orders?.length > 0 &&
-        orders.map((order) => {
-          return <PurchaseItem order={order} key={order._id} />;
-        })}
+    <div className="purchase">
+      <div className="scroll-container">
+        {orders?.length > 0 &&
+          orders.map((order) => {
+            return <PurchaseItem order={order} key={order._id} />;
+          })}
 
-      {/*
+        {/*
     <HorizontalScroller dishes={dishes}></HorizontalScroller>
      */}
+      </div>
     </div>
   );
 };
