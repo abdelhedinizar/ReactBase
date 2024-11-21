@@ -19,58 +19,12 @@ const Purchase = ({ user }) => {
     }
   });
 
-  /*
-  const sampleOrder = {
-    id: 789,
-    tableNumber: 12,
-    items: [
-      { name: "Grilled Chicken" },
-      { name: "French Fries" },
-      { name: "Lemonade" },
-    ],
-    totalPrice: 34.99,
-    status: "pending",
-    orderTime: "8:15 PM",
-    imageUrl: "/images/pizza.jpg",
-  };
-
-  const secondOrder = {
-    id: 12,
-    tableNumber: 12,
-    items: [
-      { name: "Grilled Chicken" },
-      { name: "French Fries" },
-      { name: "Lemonade" },
-    ],
-    totalPrice: 34.99,
-    status: "completed",
-    orderTime: "8:15 PM",
-    imageUrl: "/images/pepperoni.jpg",
-  };
-
-  const third = {
-    id: 789,
-    tableNumber: 12,
-    items: [
-      { name: "Grilled Chicken" },
-      { name: "French Fries" },
-      { name: "Lemonade" },
-      { name: "Apple Pie" },
-    ],
-    totalPrice: 34.99,
-    status: "Pending",
-    orderTime: "8:15 PM",
-    imageUrl: "/images/ravioli.jpg",
-  };
-*/
   return (
-    <div className="purchase-container"
-    >
+    <div className="purchase-container">
       {orders?.length > 0 &&
         orders.map((order) => {
           return <PurchaseItem order={order} key={order._id} />;
         })}
-
 
       {/*
     <HorizontalScroller dishes={dishes}></HorizontalScroller>

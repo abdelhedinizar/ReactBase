@@ -1,4 +1,8 @@
-/* Card Container */
+@media (max-width: 768px) {
+  .compact-card {
+    width: 340px !important;
+  }
+}
 .compact-card {
   width: 360px;
   background: #ffffff;
