@@ -85,7 +85,7 @@
 }
 
 .chat-message {
-  padding: 12px 16px;
+  padding: 4px 10px;
   border-radius: 16px;
   max-width: 70%;
   font-size: 1rem;
@@ -97,13 +97,13 @@
 .bot-message {
   background-color: #f4f4f4;
   color: #333;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 2px 4px;
+  box-shadow: rgba(0, 0, 0, 0.05) -5px 6px 10px;
 }
 
 .user-message {
   background-color: rgb(255, 167, 38);
   color: white;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 6px;
+  box-shadow: rgba(255, 167, 38, 0.25) 5px 6px 10px;
 }
 
 /* Timestamp */
