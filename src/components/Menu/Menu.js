@@ -6,7 +6,7 @@ import MenuCategory from "./MenuCategory/MenuCategory";
 import createRipple from "../../utils/Ripple";
 import { useNavigate } from "react-router-dom";
 import DiscussionModal from "./DiscussionModal/DiscussionModal";
-import Modal from "../modal/Modal";
+import Modal from "../modal/SmallModal";
 
 function Menu({ dishes, commandeDishs, user }) {
   const navigate = useNavigate();
