@@ -63,4 +63,36 @@
     width: 160px;
     height: 50px;
   }
+
+  .bot-button {
+    width: 50px !important;
+    height: 50px !important;
+    bottom: 15px;
+    right: 15px;
+    font-size: 1.2rem;
+  }
+}
+
+.bot-button {
+  width: 60px;
+  height: 60px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #ff9800;
+  border: none;
+  border-radius: 50%;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 6px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.bot-button:hover {
+  transform: scale(1.1);
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 6px 8px;
 }
