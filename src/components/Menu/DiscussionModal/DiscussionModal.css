@@ -13,7 +13,7 @@
 
 /* Header */
 .chat-header {
-  background-color: #841c2e;
+  background: linear-gradient(135deg, #500000, #841c2e);
   color: #ffffff;
   text-align: center;
   font-size: 1rem;
@@ -50,12 +50,10 @@
 
 .bot-message-container {
   flex-direction: row;
-  /* Bot messages on the left */
 }
 
 .user-message-container {
-  flex-direction: row-reverse;
-  /* User messages on the right */
+  flex-direction: row;
 }
 
 /* Avatars */
@@ -124,7 +122,7 @@
 }
 
 .chat-footer input {
-  flex: 1;
+  flex: auto;
   padding: 12px 14px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 24px;
