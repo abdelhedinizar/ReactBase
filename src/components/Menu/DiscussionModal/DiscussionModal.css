@@ -157,3 +157,15 @@
 .chat-footer button:active {
   transform: translateY(1px);
 }
+
+@media (max-width: 768px) {
+  .discussion-modal {
+    height: 70vh !important;
+  }
+  .chat-body {
+    padding: 8px !important;
+  }
+  .chat-footer {
+    padding: 8px !important;
+  }
+}

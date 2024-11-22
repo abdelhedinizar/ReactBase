@@ -50,3 +50,10 @@
     opacity: 1;
   }
 }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .small-modal-content {
+    max-height: 60% !important;
+  }
+}
