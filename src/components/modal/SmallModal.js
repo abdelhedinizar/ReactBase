@@ -1,5 +1,5 @@
-import React from 'react';
-import './SmallModal.css';
+import React from "react";
+import "./SmallModal.css";
 
 function Modal({ show, onClose, children }) {
   if (!show) {
@@ -8,8 +8,10 @@ function Modal({ show, onClose, children }) {
 
   return (
     <div className="modal-backdrop">
-      <div className="modal-content">
-        <button className="modal-close" onClick={onClose}>X</button>
+      <div className="small-modal-content">
+        <button className="modal-close" onClick={onClose}>
+          X
+        </button>
         <div className="modal-body">{children}</div>
       </div>
     </div>
