@@ -81,7 +81,7 @@ function Menu({ dishes, commandeDishs, user }) {
       </button>
 
       <Modal show={isModalOpen} onClose={closeModal}>
-        <DiscussionModal />
+        <DiscussionModal dishes={dishList} />
       </Modal>
     </main>
   );

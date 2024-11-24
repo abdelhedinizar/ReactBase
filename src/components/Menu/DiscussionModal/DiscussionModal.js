@@ -1,68 +1,71 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import startChatWithBot from "../../../services/AssistanceServ";
 import "./DiscussionModal.css";
 
-export default function DiscussionModal() {
-  const [messages, setMessages] = useState([
-    {
-      id: 1,
-      sender: "bot",
-      text: "Hello! How can I assist you today?",
-      timestamp: "10:15 AM",
-      avatar: "https://via.placeholder.com/40?text=B", // Bot avatar
-    },
-    {
-      id: 2,
-      sender: "user",
-      text: "What are the specials on the menu?",
-      timestamp: "10:16 AM",
-      avatar: "https://via.placeholder.com/40?text=U", // User avatar
-    },
-    {
-      id: 3,
-      sender: "bot",
-      text: "We have great deals on pizzas and burgers!",
-      timestamp: "10:17 AM",
-      avatar: "https://via.placeholder.com/40?text=B",
-    },
-    {
-      id: 1,
-      sender: "bot",
-      text: "Hello! How can I assist you today?",
-      timestamp: "10:15 AM",
-      avatar: "https://via.placeholder.com/40?text=B", // Bot avatar
-    },
-    {
-      id: 2,
-      sender: "user",
-      text: "What are the specials on the menu?",
-      timestamp: "10:16 AM",
-      avatar: "https://via.placeholder.com/40?text=U", // User avatar
-    },
-    {
-      id: 3,
-      sender: "bot",
-      text: "We have great deals on pizzas and burgers!",
-      timestamp: "10:17 AM",
-      avatar: "https://via.placeholder.com/40?text=B",
-    }
-  ]);
+export default function DiscussionModal({ dishes }) {
+  const [messages, setMessages] = useState([]);
 
   const [newMessage, setNewMessage] = useState("");
 
-  const handleSendMessage = () => {
-    if (newMessage.trim()) {
+  useEffect(() => {
+    async function startChat() {
+      let botmessagecontent = await startChatWithBot({ messages: [] });
       setMessages([
-        ...messages,
         {
           id: Date.now(),
-          sender: "user",
-          text: newMessage,
-          timestamp: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
-          avatar: "https://via.placeholder.com/40?text=U",
+          role: "bot",
+          content: botmessagecontent,
+          timestamp: new Date().toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit",
+          }),
+          avatar: "https://via.placeholder.com/40?text=B",
         },
       ]);
-      setNewMessage("");
     }
+    startChat();
+  }, []);
+
+  const handleSendMessage = async () => {
+    if (newMessage.trim() === "") return;
+
+    const userMessage = {
+      id: Date.now(),
+      role: "user",
+      content: newMessage,
+      timestamp: new Date().toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+      }),
+      avatar: "https://via.placeholder.com/40?text=U",
+    };
+    setMessages((prevMessages) => [...prevMessages, userMessage]);
+    setNewMessage("");
+    let msg = JSON.parse(JSON.stringify(messages));
+    msg.push(userMessage);
+
+    let messagesBody = {
+      messages: msg.map((message) => {
+        return {
+          role: message.role,
+          content: message.content,
+        };
+      }),
+    };
+
+    let botmessagecontent = await startChatWithBot(messagesBody);
+
+    let botMessage = {
+      id: Date.now(),
+      role: "bot",
+      content: botmessagecontent,
+      timestamp: new Date().toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit",
+      }),
+      avatar: "https://via.placeholder.com/40?text=B",
+    };
+    setMessages((prevMessages) => [...prevMessages, botMessage]);
   };
 
   return (
@@ -75,21 +78,31 @@ export default function DiscussionModal() {
           <div
             key={msg.id}
             className={`chat-message-container ${
-              msg.sender === "bot" ? "bot-message-container" : "user-message-container"
+              msg.role === "bot"
+                ? "bot-message-container"
+                : "user-message-container"
             }`}
           >
-            {msg.sender === "bot" && <img src={msg.avatar} alt="Bot" className="avatar" />}
-            <div className={`message-wrapper ${msg.sender === "bot" ? "align-left" : "align-right"}`}>
+            {msg.role === "bot" && (
+              <img src={msg.avatar} alt="Bot" className="avatar" />
+            )}
+            <div
+              className={`message-wrapper ${
+                msg.role === "bot" ? "align-left" : "align-right"
+              }`}
+            >
               <div
                 className={`chat-message ${
-                  msg.sender === "bot" ? "bot-message" : "user-message"
+                  msg.role === "bot" ? "bot-message" : "user-message"
                 }`}
               >
-                <p>{msg.text}</p>
+                <p>{msg.content}</p>
               </div>
               <span className="timestamp">{msg.timestamp}</span>
             </div>
-            {msg.sender === "user" && <img src={msg.avatar} alt="User" className="avatar" />}
+            {msg.role === "user" && (
+              <img src={msg.avatar} alt="User" className="avatar" />
+            )}
           </div>
         ))}
       </div>
