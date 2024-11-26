@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Background from "../Utils/Background/Background";
 import { signin, signupWithSocialMedia } from "../../services/AuthServ";
 import "./Login.css";
@@ -9,6 +9,8 @@ const Login = ({ onLogin }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
+  const { from } = location.state || {};
 
   const responseFacebook = async (response) => {
     if (response.status !== "unknown") {
@@ -16,6 +18,9 @@ const Login = ({ onLogin }) => {
       const resp = await signupWithSocialMedia(response);
       sessionStorage.setItem("authToken", resp);
       onLogin();
+      if (from === "commande") {
+        window.location.href = "/commande";
+      }
       navigate("/");
     } else {
       console.log("User cancelled login or did not fully authorize.");
@@ -28,6 +33,9 @@ const Login = ({ onLogin }) => {
       const token = await signin({ email: username, password });
       sessionStorage.setItem("authToken", token);
       onLogin();
+      if (from === "commande") {
+        window.location.href = "/commande";
+      }
       navigate("/");
     } catch (error) {
       console.error("Login failed:", error);

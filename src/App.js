@@ -54,6 +54,7 @@ function App() {
 
   const handleLogin = () => {
     setIsAuthenticated(true);
+    verifyUser();
   };
 
   const handleLogout = () => {

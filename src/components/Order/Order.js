@@ -1,9 +1,11 @@
 import "./Order.css";
 import OrderItem from "./OrderItem/OrderItem";
 import { createOrder, createSession } from "../../services/OrderServ";
+import { useNavigate } from "react-router-dom";
 
 function Order({ commande, user }) {
   const [commandeList, setCommandeList] = commande;
+  const navigate = useNavigate();
   const handleDelete = (orderItem) => {
     const newCommandeList = commandeList.filter(
       (item) => item.dish._id !== orderItem.dish._id
@@ -38,7 +40,11 @@ function Order({ commande, user }) {
       sessionStorage.setItem("order", order);
       window.location.href = await createSession(order.data.order.id);
     } else {
-      window.location.href = "/login";
+      const data = {
+        message: "Please login to order your dishes",
+        from: "commande",
+      };
+      navigate("/login", { state: data });
     }
   };
   return (
