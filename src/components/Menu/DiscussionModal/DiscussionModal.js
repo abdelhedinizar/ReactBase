@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import startChatWithBot from "../../../services/AssistanceServ";
+import gsap from "gsap";
 import "./DiscussionModal.css";
 
 export default function DiscussionModal({ dishes }) {
   const [messages, setMessages] = useState([]);
 
   const [newMessage, setNewMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const chatBodyRef = useRef(null);
 
   useEffect(() => {
     async function startChat() {
@@ -26,6 +29,17 @@ export default function DiscussionModal({ dishes }) {
     startChat();
   }, []);
 
+
+useEffect(() => {
+  if (chatBodyRef.current) {
+    gsap.to(chatBodyRef.current, {
+      scrollTop: chatBodyRef.current.scrollHeight,
+      duration: 1,
+      ease: "power2.out",
+    });
+  }
+}, [messages]);
+
   const handleSendMessage = async () => {
     if (newMessage.trim() === "") return;
 
@@ -41,6 +55,7 @@ export default function DiscussionModal({ dishes }) {
     };
     setMessages((prevMessages) => [...prevMessages, userMessage]);
     setNewMessage("");
+    setIsLoading(true);
     let msg = JSON.parse(JSON.stringify(messages));
     msg.push(userMessage);
 
@@ -66,6 +81,7 @@ export default function DiscussionModal({ dishes }) {
       avatar: "https://via.placeholder.com/40?text=B",
     };
     setMessages((prevMessages) => [...prevMessages, botMessage]);
+    setIsLoading(false);
   };
 
   return (
@@ -73,7 +89,7 @@ export default function DiscussionModal({ dishes }) {
       <div className="chat-header">
         <h4>Chat Support</h4>
       </div>
-      <div className="chat-body">
+      <div className="chat-body" ref={chatBodyRef}>
         {messages.map((msg) => (
           <div
             key={msg.id}
@@ -105,6 +121,11 @@ export default function DiscussionModal({ dishes }) {
             )}
           </div>
         ))}
+        {isLoading && (
+          <div className="loading-message">
+            <p>Typing...</p>
+          </div>
+        )}
       </div>
       <div className="chat-footer">
         <input
