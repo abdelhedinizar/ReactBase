@@ -22,6 +22,10 @@ const OrderSuccess = () => {
         }
         if (data.orders[0].paymentStatus === "paid") {
           setStatus("paid");
+          sessionStorage.setItem(
+            "commandeDish",
+            JSON.stringify([])
+          );
         } else {
           setStatus("unpaid");
         }

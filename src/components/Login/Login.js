@@ -19,9 +19,12 @@ const Login = ({ onLogin }) => {
       sessionStorage.setItem("authToken", resp);
       onLogin();
       if (from === "commande") {
-        window.location.href = "/commande";
+        navigate("/commande");
       }
-      navigate("/");
+      else {
+        navigate("/");
+      }
+      
     } else {
       console.log("User cancelled login or did not fully authorize.");
     }
@@ -34,9 +37,10 @@ const Login = ({ onLogin }) => {
       sessionStorage.setItem("authToken", token);
       onLogin();
       if (from === "commande") {
-        window.location.href = "/commande";
-      }
+        navigate("/commande");
+      }else {
       navigate("/");
+      }
     } catch (error) {
       console.error("Login failed:", error);
       alert("Invalid credentials, please try again.");
