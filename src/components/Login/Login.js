@@ -96,10 +96,10 @@ const Login = ({ onLogin }) => {
             />
           </span>
           <span>
-            <i class="fa-brands fa-instagram"></i>
+            <i className="fa-brands fa-instagram"></i>
           </span>
           <span>
-            <i class="fa-brands fa-google-plus-g"></i>
+            <i className="fa-brands fa-google-plus-g"></i>
           </span>
         </p>
         <p className="p-link">

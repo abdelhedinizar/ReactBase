@@ -6,7 +6,7 @@ const LoginButton = () => {
   };
   return (
     <div className="cart-icon-container" onClick={navigateToLogin}>
-      <i class="fa-solid fa-right-to-bracket"></i>
+      <i className="fa-solid fa-right-to-bracket"></i>
     </div>
   );
 };

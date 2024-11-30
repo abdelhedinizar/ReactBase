@@ -1,7 +1,7 @@
 const ProfilButton = () => {
   return (
     <div className="cart-icon-container">
-      <i class="fa-solid fa-user"></i>
+      <i className="fa-solid fa-user"></i>
     </div>
   );
 };

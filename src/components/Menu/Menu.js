@@ -77,7 +77,7 @@ function Menu({ dishes, commandeDishs, user }) {
       </button>
 
       <button className="bot-button" onClick={() => openModal()}>
-        <i class="fa-solid fa-comment"></i>
+        <i className="fa-solid fa-comment"></i>
       </button>
 
       <Modal show={isModalOpen} onClose={closeModal}>
