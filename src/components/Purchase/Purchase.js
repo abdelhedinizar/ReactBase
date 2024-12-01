@@ -10,7 +10,7 @@ const Purchase = ({ user, children, purchases, from }) => {
     } else {
       purchases(setOrders);
     }
-  }, [user, from]);
+  }, [user, from, purchases]);
 
   return (
     <div className="purchase">
