@@ -1,35 +1,25 @@
-import { useEffect, useState } from "react";
-//import HorizontalScroller from "./HorizontalScroller/HorizontalScroller";
-import PurchaseItem from "./HorizontalScroller/PurchaseItem/PurchaseItem";
-import { getMyCurrentOrders } from "../../services/OrderServ";
+import React, { useEffect, useState } from "react";
 import "./Purchase.css";
 
-const Purchase = ({ user }) => {
+const Purchase = ({ user, children, purchases, from }) => {
   const [orders, setOrders] = useState([]);
 
-  const getYourPurchase = async () => {
-    const data = await getMyCurrentOrders(user);
-    const orders = data.orders;
-    setOrders(orders);
-  };
-
   useEffect(() => {
-    if (user) {
-      getYourPurchase();
+    if (from === "myPurchases") {
+      purchases(user, setOrders);
+    } else {
+      purchases(setOrders);
     }
-  });
+  }, [user, from]);
 
   return (
     <div className="purchase">
       <div className="scroll-container">
-        {orders?.length > 0 &&
-          orders.map((order) => {
-            return <PurchaseItem order={order} key={order._id} />;
-          })}
-
-        {/*
-    <HorizontalScroller dishes={dishes}></HorizontalScroller>
-     */}
+        {orders.map((order) =>
+          React.Children.map(children, (child) =>
+            React.cloneElement(child, { order, key: order._id })
+          )
+        )}
       </div>
     </div>
   );

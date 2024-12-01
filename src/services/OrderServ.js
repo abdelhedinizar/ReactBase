@@ -68,4 +68,26 @@ const getMyCurrentOrders = async (user) => {
     throw error;
   }
 };
-export { createOrder, createSession, getOrderBySessionId, getMyCurrentOrders };
+
+const getOrdersOftheDay = async () => {
+  try {
+    const response = await fetch(
+      `${process.env.REACT_APP_BACK_API_URL}/orders?createdAt=today&sort=createdAt`
+    );
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+    return data.data;
+  } catch (error) {
+    console.error("Error fetching dish list:", error);
+    throw error;
+  }
+};
+export {
+  createOrder,
+  createSession,
+  getOrderBySessionId,
+  getMyCurrentOrders,
+  getOrdersOftheDay,
+};

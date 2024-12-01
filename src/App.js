@@ -10,6 +10,10 @@ import Signup from "./components/SignUp/SignUp";
 import Purchases from "./components/Purchase/Purchase";
 import OrderSuccess from "./components/Order/OrderSuccess/OrderSuccess";
 import { getUser } from "./services/AuthServ";
+import RoleProtectedRoute from "./components/Route/RoleProtectedRoute";
+import Unauthorized from "./components/Utils/Unauthorized/Unauthorized";
+import { getYourPurchase } from "./controllers/UserController";
+import { getPurchasesOftheDay } from "./controllers/StaffController";
 
 import { useState, useEffect } from "react";
 import {
@@ -18,6 +22,8 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
+import PurchaseItem from "./components/Purchase/HorizontalScroller/PurchaseItem/PurchaseItem";
+import Settings from "./components/Admin/Settings/Settings";
 
 function App() {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -25,6 +31,7 @@ function App() {
   const [commande, setCommande] = useState([]);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
   const getCommandFromSessionStorage = () => {
     const commandeDish = JSON.parse(sessionStorage.getItem("commandeDish"));
     if (commandeDish) {
@@ -49,7 +56,7 @@ function App() {
 
   useEffect(() => {
     getCommandFromSessionStorage();
-    verifyUser();
+    verifyUser().finally(() => setLoading(false));
   }, []);
 
   const handleLogin = () => {
@@ -72,6 +79,10 @@ function App() {
   const toggleNavBar = () => {
     setIsNavOpen(!isNavOpen);
   };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <Router>
@@ -97,10 +108,37 @@ function App() {
                   />
                 }
               />
+              <Route
+                path="/admin"
+                element={
+                  <RoleProtectedRoute
+                    allowedRoles={["admin"]}
+                    user={user}
+                    isAuthenticated={isAuthenticated}
+                  >
+                    <Admin />
+                  </RoleProtectedRoute>
+                }
+              />
+              <Route path="/settings" element={<Settings />}/>
+              <Route path="/unauthorized" element={<Unauthorized />} />
               <Route path="/about" element={<About />} />
               <Route
+                path="/myPurchases"
+                element={
+                  <Purchases user={user} purchases={getYourPurchase} from="myPurchases">
+                    <PurchaseItem />
+                  </Purchases>
+                }
+              />
+
+              <Route
                 path="/purchases"
-                element={<Purchases dishes={commande} user={user} />}
+                element={
+                  <Purchases purchases={getPurchasesOftheDay} from="purchases">
+                    <PurchaseItem />
+                  </Purchases>
+                }
               />
               <Route path="/contact" element={<Contact />} />
               <Route
@@ -128,5 +166,6 @@ function App() {
 
 const About = () => <h2>About Page</h2>;
 const Contact = () => <h2>Contact Page</h2>;
+const Admin = () => <h2>Admin Page</h2>;
 
 export default App;

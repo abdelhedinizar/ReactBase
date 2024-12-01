@@ -28,32 +28,74 @@ const NavBar = ({ logout, isAuthenticated, user }) => {
         </div>
       </div>
 
-      {/* Divider */}
       <div className="divider"></div>
 
       <div className="menu-section">
         <nav>
           <ul className="nav-links">
             <li>
-              <a href="/">Home</a>
+              <div className="nav-item">
+                <i className="fa-solid fa-house icon"></i>
+                <a href="/">Home</a>
+              </div>
+            </li>
+            {user?.role === "admin" && (
+              <>
+                <li>
+                  <div className="nav-item">
+                    <i className="fa-solid fa-chart-line icon"></i>
+                    <a href="/dashboard">Dashboard</a>
+                  </div>
+                </li>
+                <li>
+                  <div className="nav-item">
+                    <i className="fa-solid fa-gear icon"></i>
+                    <a href="/settings">Settings</a>
+                  </div>
+                </li>
+              </>
+            )}
+            {(user?.role === "Staff" || user?.role === "admin") && (
+              <>
+                <li>
+                  <div className="nav-item">
+                    <i className="fa-solid fa-chart-line icon"></i>
+                    <a href="/purchases">Purchases</a>
+                  </div>
+                </li>
+              </>
+            )}
+            <li>
+              <div className="nav-item">
+                <i className="fa-solid fa-utensils icon"></i>
+                <a href="/commande">Commande</a>
+              </div>
             </li>
             <li>
-              <a href="/commande">commande</a>
+              <div className="nav-item">
+                <i className="fa-solid fa-receipt icon"></i>
+                <a href="/myPurchases">My Purchases</a>
+              </div>
             </li>
-
             <li>
-              <a href="/purchases">my purchases</a>
-            </li>
-            <li>
-              <a href="/favorites">favorite dishes</a>
+              <div className="nav-item">
+                <i className="fa-solid fa-heart icon"></i>
+                <a href="/favorites">Favorite Dishes</a>
+              </div>
             </li>
             {isAuthenticated ? (
               <li onClick={logout}>
-                <a href="/login">Logout</a>
+                <div className="nav-item">
+                  <i className="fa-solid fa-sign-out-alt icon"></i>
+                  <a href="/login">Logout</a>
+                </div>
               </li>
             ) : (
               <li>
-                <a href="/login">Log in</a>
+                <div className="nav-item">
+                  <i className="fa-solid fa-sign-in-alt icon"></i>
+                  <a href="/login">Log in</a>
+                </div>
               </li>
             )}
           </ul>
