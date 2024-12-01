@@ -1,6 +1,5 @@
 import React from "react";
 import "./StaffList.css";
-import AddStaffButton from "../AddStaffButton/AddStaffButton";
 
 const StaffList = () => {
   const staff = [
