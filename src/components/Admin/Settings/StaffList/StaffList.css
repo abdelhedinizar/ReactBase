@@ -1,0 +1,90 @@
+.staff-list-container {
+  overflow-x: auto;
+  /* Ensure horizontal scrolling for mobile devices */
+}
+
+.staff-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.staff-table thead {
+  color: #841c2e;
+}
+
+.staff-table th,
+.staff-table td {
+  padding: 15px;
+  text-align: left;
+}
+
+.staff-table th {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.staff-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.staff-table tr:nth-child(odd) {
+  background-color: white;
+}
+
+.add-staff-row {
+  text-align: center;
+  background-color: #f9f9f9;
+  padding: 20px;
+}
+
+.table-button {
+  margin: 0 5px;
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.change-password {
+  background-color: #841c2e;
+  color: white;
+}
+
+.change-password:hover {
+  background-color: #6a1524;
+}
+
+.change-email {
+  background-color: #f1f1f1;
+  color: #841c2e;
+  border: 1px solid #841c2e;
+}
+
+.change-email:hover {
+  background-color: #841c2e;
+  color: white;
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 768px) {
+  .staff-table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  .staff-table th,
+  .staff-table td {
+    white-space: nowrap;
+  }
+
+  .add-staff-button {
+    font-size: 14px;
+    padding: 10px 0;
+  }
+}
