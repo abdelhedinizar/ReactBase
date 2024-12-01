@@ -16,10 +16,6 @@ const StaffList = () => {
     alert(`Change email for ${name}`);
   };
 
-  const handleAddStaff = () => {
-    alert("Add new staff functionality coming soon!");
-  };
-
   return (
     <div className="staff-list-container">
       <table className="staff-table">
