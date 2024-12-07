@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./StaffList.css";
+import { getStaff } from "../../../../services/UserServ";
 
 const StaffList = () => {
-  const staff = [
-    { name: "John Doe", email: "john.doe@example.com" },
-    { name: "Jane Smith", email: "jane.smith@example.com" },
-    { name: "Robert Brown", email: "robert.brown@example.com" },
-  ];
+  const [staffs, setStaffs] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const fetchedData = await getStaff();
+      setStaffs(fetchedData.users);
+    };
+    fetchData();
+  }, [setStaffs]);
 
   const handleChangePassword = (name) => {
     alert(`Change password for ${name}`);
@@ -27,7 +32,7 @@ const StaffList = () => {
           </tr>
         </thead>
         <tbody>
-          {staff.map((member, index) => (
+          {staffs.map((member, index) => (
             <tr key={index}>
               <td>{member.name}</td>
               <td>{member.email}</td>

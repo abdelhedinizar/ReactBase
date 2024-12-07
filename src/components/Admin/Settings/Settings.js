@@ -1,8 +1,12 @@
+import { useState } from "react";
 import AddStaffButton from "./AddStaffButton/AddStaffButton";
 import "./Settings.css";
 import StaffList from "./StaffList/StaffList";
+import AddStaff from "./AddStaff/AddStaff";
 
 const Settings = () => {
+  const [currentView, setCurrentView] = useState("staffList");
+
   return (
     <div>
       <div className="settings-menu">
@@ -18,12 +22,23 @@ const Settings = () => {
       </div>
 
       <div className="settings-content">
-        <h2>Staff</h2>
-        <div className="settings-item">
-          <StaffList />
-           <AddStaffButton />
-      
-        </div>
+        {currentView === "staffList" && (
+          <>
+            <h2>Staff</h2>
+            <div className="settings-item">
+              <StaffList />
+              <AddStaffButton onClick={() => setCurrentView("addMember")} />
+            </div>
+          </>
+        )}
+         {currentView === "addMember" && (
+          <>
+            <h2>Add Member</h2>
+            <div className="settings-item">
+              <AddStaff onBack={() => setCurrentView("staffList")}/>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

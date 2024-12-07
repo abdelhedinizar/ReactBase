@@ -1,0 +1,102 @@
+/* General Form Styles */
+form {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* Label Styling */
+form label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #841c2e;
+}
+
+/* Input Fields */
+form input {
+    font-size: 16px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+form input:focus {
+    border-color: #841c2e;
+    box-shadow: 0 0 5px rgba(132, 28, 46, 0.5);
+    outline: none;
+}
+
+/* Buttons Container */
+.form-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+/* Primary Button */
+form button {
+    background-color: #841c2e;
+    color: white;
+    font-size: 16px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+form button:hover {
+    background-color: #500000;
+    transform: scale(1.05);
+}
+
+form button:active {
+    transform: scale(1);
+}
+
+/* Back Button Styling */
+form .back-button {
+    background-color: #ddd;
+    color: #333;
+    font-size: 16px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+form .back-button:hover {
+    background-color: #bbb;
+    transform: scale(1.05);
+}
+
+form .back-button:active {
+    transform: scale(1);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+    form {
+        padding: 15px;
+        gap: 10px;
+    }
+
+    form label {
+        font-size: 14px;
+    }
+
+    form input {
+        font-size: 14px;
+    }
+
+    form button {
+        font-size: 14px;
+    }
+}
