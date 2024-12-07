@@ -1,7 +1,14 @@
+const token = sessionStorage.getItem("authToken");
+
 const getStaff = async () => {
   try {
     const response = await fetch(
-      `${process.env.REACT_APP_BACK_API_URL}/users?role=Staff`
+      `${process.env.REACT_APP_BACK_API_URL}/users?role=Staff`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
     );
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -29,6 +36,7 @@ const AddStaffServ = async (name, email, password, confirmPassword) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(staffBody),
       }
