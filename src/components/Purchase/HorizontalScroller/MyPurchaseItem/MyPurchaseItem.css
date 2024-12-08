@@ -3,6 +3,7 @@
     width: 330px !important;
   }
 }
+
 .compact-card {
   width: 360px;
   background: #ffffff;
@@ -65,7 +66,6 @@
 .status-badge.canceled {
   background: #dc3545;
 }
-
 /* Content Section */
 .card-content {
   padding: 12px 16px;

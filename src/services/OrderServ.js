@@ -1,3 +1,5 @@
+const token = sessionStorage.getItem("authToken");
+
 const createOrder = async (orderData) => {
   try {
     const response = await fetch(
@@ -72,7 +74,7 @@ const getMyCurrentOrders = async (user) => {
 const getOrdersOftheDay = async () => {
   try {
     const response = await fetch(
-      `${process.env.REACT_APP_BACK_API_URL}/orders?createdAt=today&sort=createdAt`
+      `${process.env.REACT_APP_BACK_API_URL}/orders?createdAt=today&sort=-createdAt`
     );
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -84,10 +86,38 @@ const getOrdersOftheDay = async () => {
     throw error;
   }
 };
+
+const updateOrderStatus = async (order) => {
+  try {
+    const response = await fetch(
+      `${process.env.REACT_APP_BACK_API_URL}/orders/${order._id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          id: order._id,
+          status: order.status,
+        }),
+      }
+    );
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+    return data.data;
+  } catch (error) {
+    console.error("Error updating order status:", error);
+    throw error;
+  }
+};
 export {
   createOrder,
   createSession,
   getOrderBySessionId,
   getMyCurrentOrders,
   getOrdersOftheDay,
+  updateOrderStatus,
 };

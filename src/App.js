@@ -24,6 +24,7 @@ import {
 } from "react-router-dom";
 import PurchaseItem from "./components/Purchase/HorizontalScroller/PurchaseItem/PurchaseItem";
 import Settings from "./components/Admin/Settings/Settings";
+import MyPurchaseItem from "./components/Purchase/HorizontalScroller/MyPurchaseItem/MyPurchaseItem";
 
 function App() {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -120,14 +121,18 @@ function App() {
                   </RoleProtectedRoute>
                 }
               />
-              <Route path="/settings" element={<Settings />}/>
+              <Route path="/settings" element={<Settings />} />
               <Route path="/unauthorized" element={<Unauthorized />} />
               <Route path="/about" element={<About />} />
               <Route
                 path="/myPurchases"
                 element={
-                  <Purchases user={user} purchases={getYourPurchase} from="myPurchases">
-                    <PurchaseItem />
+                  <Purchases
+                    user={user}
+                    purchases={getYourPurchase}
+                    from="myPurchases"
+                  >
+                    <MyPurchaseItem />
                   </Purchases>
                 }
               />

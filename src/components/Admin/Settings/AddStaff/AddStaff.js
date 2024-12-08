@@ -21,7 +21,7 @@ const AddStaff = ({ onBack }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="addstaffForm" onSubmit={handleSubmit}>
       <div>
         <label htmlFor="email">Email:</label>
         <input

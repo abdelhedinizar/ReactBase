@@ -10,10 +10,16 @@ const Settings = () => {
   return (
     <div>
       <div className="settings-menu">
-        <div className="menu-element">
+        <div
+          className="menu-element"
+          onClick={() => setCurrentView("staffList")}
+        >
           <i className="fa-solid fa-user-tie"></i>
         </div>
-        <div className="menu-element">
+        <div
+          className="menu-element"
+          onClick={() => setCurrentView("MenuList")}
+        >
           <i className="fa-solid fa-book-open"></i>
         </div>
         <div className="menu-element">
@@ -31,11 +37,11 @@ const Settings = () => {
             </div>
           </>
         )}
-         {currentView === "addMember" && (
+        {currentView === "addMember" && (
           <>
             <h2>Add Member</h2>
             <div className="settings-item">
-              <AddStaff onBack={() => setCurrentView("staffList")}/>
+              <AddStaff onBack={() => setCurrentView("staffList")} />
             </div>
           </>
         )}
