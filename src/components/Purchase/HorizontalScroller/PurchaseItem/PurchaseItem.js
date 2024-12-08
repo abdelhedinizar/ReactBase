@@ -42,8 +42,8 @@ const PurchaseItem = ({ order }) => {
   };
 
   const goTotheNextStatus = async () => {
-    setIsLoading(true);
     if (orderStatus === "completed") return;
+    setIsLoading(true);
     order.status = nextStatus();
     setOrderStatus(order.status);
     await updateOrderStatus(order);
