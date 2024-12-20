@@ -9,8 +9,10 @@ export default function DiscussionModal({ dishes }) {
   const [newMessage, setNewMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const chatBodyRef = useRef(null);
+  const hasStartedChat = useRef(false);
 
   useEffect(() => {
+    if (!hasStartedChat.current) {
     async function startChat() {
       let botmessagecontent = await startChatWithBot({ messages: [] });
       setMessages([
@@ -27,6 +29,8 @@ export default function DiscussionModal({ dishes }) {
       ]);
     }
     startChat();
+       hasStartedChat.current = true;
+    }
   }, []);
 
 

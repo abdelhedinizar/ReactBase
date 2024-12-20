@@ -1,5 +1,6 @@
 const startChatWithBot = async (messages) => {
   try {
+    console.log(`${process.env.REACT_APP_BACK_API_URL}/assistances`);
     const response = await fetch(
       `${process.env.REACT_APP_BACK_API_URL}/assistances`,
       {

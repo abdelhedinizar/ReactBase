@@ -121,7 +121,10 @@ function App() {
                   </RoleProtectedRoute>
                 }
               />
-              <Route path="/settings" element={<Settings />} />
+              <Route
+                path="/settings"
+                element={<Settings dishes={dishList} />}
+              />
               <Route path="/unauthorized" element={<Unauthorized />} />
               <Route path="/about" element={<About />} />
               <Route
